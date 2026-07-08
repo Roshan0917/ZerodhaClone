@@ -9,44 +9,33 @@ const Summary = () => {
 
  useEffect(() => {
 
-  const user = JSON.parse(localStorage.getItem("user"));
+const user = JSON.parse(localStorage.getItem("user"));
 
-  if (!user) return;
+console.log("USER:", user);
 
-
-
-  const fetchSummary = () => {
-
-    axios
-      .get(`https://zerodhaclone-backend-b7nd.onrender.com/summary/${user._id}`)
-      .then((res) => {
-
-        setSummary(res.data);
-
-      })
-      .catch((err) => {
-
-        console.log(err);
-
-      });
-
-  };
+if (!user) return;
 
 
+axios
+.get(`https://zerodhaclone-backend-b7nd.onrender.com/summary/${user._id}`)
+.then((res)=>{
 
-  fetchSummary();
+console.log("SUMMARY RESPONSE:",res.data);
+
+setSummary(res.data);
+
+})
+.catch((err)=>{
+
+console.log(
+"SUMMARY ERROR:",
+err.response?.data || err.message
+);
+
+});
 
 
-
-  const interval = setInterval(fetchSummary, 30000);
-
-
-
-  return () => clearInterval(interval);
-
-
-
-}, []);
+},[]);
 
 
 

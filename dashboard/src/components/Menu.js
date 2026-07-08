@@ -37,7 +37,7 @@ const Menu = () => {
   return (
     <div className="menu-container">
      <img
-  src="DashboardLogo.png"
+  src="/DashboardLogo.png"
   alt="logo"
   className="dashboard-logo"
 />
