@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { UserModel } = require("../models/UserModel");
 
-const JWT_SECRET = process.env.JWT_SECRET || "ZERODHA_SECRET_KEY";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // ================= SIGNUP =================
 exports.signup = async (req, res) => {

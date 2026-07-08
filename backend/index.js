@@ -23,7 +23,7 @@ const stockRoutes = require("./routes/stockRoutes");
 const app = express();
 
 const PORT = process.env.PORT || 3002;
-const MONGO_URI = process.env.MONGO_URL;
+const MONGO_URL = process.env.MONGO_URL;
 
 // ================= GLOBAL MIDDLEWARE =================
 app.use(
@@ -85,8 +85,8 @@ mongoose
   .then(() => {
     console.log("✅ MongoDB Connected");
 
-    app.listen(PORT, () => {
-      console.log(`🚀 Server running on http://localhost:${PORT}`);
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`🚀 Server running on port ${PORT}`);
     });
   })
   .catch((err) => {
