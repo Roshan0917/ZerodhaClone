@@ -36,10 +36,10 @@ const Menu = () => {
 
   return (
     <div className="menu-container">
-     <img
-  src="/DashboardLogo.png"
-  alt="logo"
-  className="dashboard-logo"
+    <img
+ src="/DashboardLogo.png"
+ alt="logo"
+ className="dashboard-logo"
 />
 
       <div className="menus">

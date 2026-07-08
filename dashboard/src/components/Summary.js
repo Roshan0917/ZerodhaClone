@@ -7,30 +7,31 @@ const Summary = () => {
   const [summary, setSummary] = useState(null);
 
 
- useEffect(() => {
+useEffect(() => {
 
-const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
 
-console.log("USER:", user);
+  console.log("USER FROM STORAGE:", user);
 
-if (!user) return;
+
+  if (!user) {
+    console.log("NO USER FOUND");
+    return;
+  }
 
 
 axios
 .get(`https://zerodhaclone-backend-b7nd.onrender.com/summary/${user._id}`)
-.then((res)=>{
+.then((res) => {
 
-console.log("SUMMARY RESPONSE:",res.data);
+  console.log("SUMMARY RESPONSE:", res.data);
 
-setSummary(res.data);
+  setSummary(res.data);
 
 })
-.catch((err)=>{
+.catch((err) => {
 
-console.log(
-"SUMMARY ERROR:",
-err.response?.data || err.message
-);
+  console.log("SUMMARY ERROR:", err);
 
 });
 
