@@ -60,7 +60,7 @@ exports.getStocks = async (req, res) => {
     } catch (err) {
 
 
-        console.log("STOCK ERROR:", err.message);
+        console.log("STOCK ERROR:", err);
 
 
         res.status(500).json({
