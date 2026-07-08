@@ -81,7 +81,7 @@ app.use("/admin", adminRoutes);
 // ======================================================
 
 mongoose
-  .connect(MONGO_URI)
+  .connect(MONGO_URL)
   .then(() => {
     console.log("✅ MongoDB Connected");
 
