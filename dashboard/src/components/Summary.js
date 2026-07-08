@@ -3,171 +3,115 @@ import axios from "axios";
 import "./Summary.css";
 
 const Summary = () => {
-console.log("SUMMARY COMPONENT MOUNTED");
   const [summary, setSummary] = useState(null);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("user"));
 
-useEffect(() => {
+    if (!user || !user._id) {
+      console.log("User not found");
+      setLoading(false);
+      return;
+    }
 
-  const user = JSON.parse(localStorage.getItem("user"));
+    const fetchSummary = async () => {
+      try {
+        const res = await axios.get(
+          `https://zerodhaclone-backend-b7nd.onrender.com/summary/${user._id}`
+        );
 
-  console.log("USER FROM STORAGE:", user);
+        console.log("SUMMARY RESPONSE:", res.data);
 
+        setSummary(res.data);
+      } catch (err) {
+        console.log("SUMMARY ERROR:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (!user) {
-    console.log("NO USER FOUND");
-    return;
+    fetchSummary();
+
+    const interval = setInterval(fetchSummary, 30000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  if (loading) {
+    return <h2>Loading...</h2>;
   }
-
-
-axios
-.get(`https://zerodhaclone-backend-b7nd.onrender.com/summary/${user._id}`)
-.then((res) => {
-
-  console.log("SUMMARY RESPONSE:", res.data);
-
-  setSummary(res.data);
-
-})
-.catch((err) => {
-
-  console.log("SUMMARY ERROR:", err);
-
-});
-
-
-},[]);
-
-
 
   if (!summary) {
-    return <h3>Loading...</h3>;
+    return <h2>No Data Found</h2>;
   }
-
-
 
   return (
     <div>
-
-
       <div className="welcome-card">
-
         <div>
-
           <h2>
-            👋 Welcome Back, {summary.fullname}
+            👋 Welcome Back, {summary.fullname || "User"}
           </h2>
 
-          <p>
-            Here's your portfolio overview.
-          </p>
-
+          <p>Here's your portfolio overview.</p>
         </div>
-
       </div>
 
-
-
-
       <div className="summary-grid">
-
-
         <div className="summary-card">
-
           <p>Available Margin</p>
 
           <h2>
-            ₹ {summary.availableMargin?.toLocaleString()}
+            ₹ {Number(summary.availableMargin || 0).toLocaleString()}
           </h2>
 
-          <small>
-            Ready to trade
-          </small>
-
+          <small>Ready to trade</small>
         </div>
 
-
-
-
-
         <div className="summary-card">
-
           <p>Total Investment</p>
 
           <h2>
-            ₹ {summary.investment?.toLocaleString()}
+            ₹ {Number(summary.investment || 0).toLocaleString()}
           </h2>
 
-          <small>
-            Across all holdings
-          </small>
-
+          <small>Across all holdings</small>
         </div>
 
-
-
-
-
-
         <div className="summary-card">
-
           <p>Current Value</p>
 
           <h2>
-            ₹ {summary.currentValue?.toLocaleString()}
+            ₹ {Number(summary.currentValue || 0).toLocaleString()}
           </h2>
 
-
-          <small 
-          className={summary.pnlPercent >= 0 ? "profit" : "loss"}
+          <small
+            className={
+              Number(summary.pnlPercent || 0) >= 0 ? "profit" : "loss"
+            }
           >
-
-            {summary.pnlPercent.toFixed(2)}%
-
+            {Number(summary.pnlPercent || 0).toFixed(2)}%
           </small>
-
-
         </div>
-
-
-
-
-
-
 
         <div className="summary-card">
-
-
-          <p>Total P&L</p>
-
+          <p>Total P&amp;L</p>
 
           <h2
-          className={summary.pnl >= 0 ? "profit" : "loss"}
+            className={
+              Number(summary.pnl || 0) >= 0 ? "profit" : "loss"
+            }
           >
-
-            {summary.pnl >= 0 ? "+" : ""}
-            ₹ {summary.pnl?.toLocaleString()}
-
+            {Number(summary.pnl || 0) >= 0 ? "+" : ""}
+            ₹ {Number(summary.pnl || 0).toLocaleString()}
           </h2>
 
-
-          <small>
-
-            Overall Profit
-
-          </small>
-
-
+          <small>Overall Profit</small>
         </div>
-
-
-
       </div>
-
-
     </div>
   );
 };
-
 
 export default Summary;

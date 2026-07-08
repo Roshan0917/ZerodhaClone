@@ -32,7 +32,7 @@ exports.getSummary = async (req, res) => {
         const quote = await Promise.race([
           yahooFinance.quote(`${stock.name}.NS`),
           new Promise((_, reject) =>
-            setTimeout(() => reject(new Error("Timeout")), 2000)
+            setTimeout(() => reject(new Error("Timeout")), 1500)
           ),
         ]);
 
