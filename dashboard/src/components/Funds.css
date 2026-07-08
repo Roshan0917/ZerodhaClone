@@ -1,0 +1,322 @@
+/* =========================
+   FUNDS PAGE (LIGHT)
+========================= */
+
+.funds-page {
+  padding: 24px;
+  background: #f3f5f7;
+  min-height: 100vh;
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   TOP SECTION
+========================= */
+
+.funds-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.funds-top h2 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.funds-top p {
+  margin-top: 4px;
+  color: #6b7280;
+  font-size: 13px;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.fund-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.green-btn,
+.blue-btn {
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: none;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.green-btn {
+  background: #00b386;
+  color: white;
+}
+
+.green-btn:hover {
+  background: #009d75;
+  transform: translateY(-2px);
+}
+
+.blue-btn {
+  background: #387ed1;
+  color: white;
+}
+
+.blue-btn:hover {
+  background: #2d6fbb;
+  transform: translateY(-2px);
+}
+
+/* =========================
+   GRID
+========================= */
+
+.funds-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 18px;
+  margin-top: 20px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.fund-card,
+.commodity-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  transition: all 0.25s ease;
+}
+
+.fund-card:hover,
+.commodity-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   HEADINGS
+========================= */
+
+.fund-card h3,
+.commodity-card h3 {
+  margin: 0 0 14px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+/* =========================
+   ROWS
+========================= */
+
+.fund-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #eef0f2;
+}
+
+.fund-row:last-child {
+  border-bottom: none;
+}
+
+.fund-row span:first-child {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.fund-row span:last-child {
+  font-size: 14px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* GREEN VALUE */
+.green {
+  color: #00b386 !important;
+}
+
+/* =========================
+   DIVIDER
+========================= */
+
+.fund-card hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 12px 0;
+}
+
+/* =========================
+   COMMODITY CARD
+========================= */
+
+.commodity-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.commodity-icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.commodity-card p {
+  color: #6b7280;
+  font-size: 13px;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+/* =========================
+   EMPTY / STATUS
+========================= */
+
+.status-box {
+  margin-bottom: 15px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.status-box h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.status-box p {
+  margin: 5px 0 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark-mode .funds-page {
+  background: #0b1220;
+}
+
+body.dark-mode .fund-card,
+body.dark-mode .commodity-card,
+body.dark-mode .status-box {
+  background: #111827;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+/* text */
+body.dark-mode .funds-top h2,
+body.dark-mode .fund-card h3,
+body.dark-mode .commodity-card h3 {
+  color: #f9fafb;
+}
+
+body.dark-mode .funds-top p,
+body.dark-mode .fund-row span:first-child,
+body.dark-mode .commodity-card p,
+body.dark-mode .status-box p {
+  color: #9ca3af;
+}
+
+body.dark-mode .fund-row span:last-child {
+  color: #e5e7eb;
+}
+
+/* divider */
+body.dark-mode .fund-card hr {
+  border-top: 1px solid #1f2937;
+}
+
+/* hover */
+body.dark-mode .fund-card:hover,
+body.dark-mode .commodity-card:hover {
+  background: #1e293b;
+}
+
+/* ===========================
+   MODAL
+=========================== */
+
+.modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.fund-modal{
+    width:380px;
+    background:#fff;
+    border-radius:15px;
+    padding:25px;
+    animation:popup .25s ease;
+}
+
+@keyframes popup{
+    from{
+        transform:scale(.9);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+.fund-modal h2{
+    margin-bottom:20px;
+    color:#222;
+}
+
+.fund-modal input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+    margin-bottom:20px;
+    box-sizing:border-box;
+}
+
+.fund-modal input:focus{
+    border-color:#387ed1;
+}
+
+.modal-buttons{
+    display:flex;
+    justify-content:flex-end;
+    gap:10px;
+}
+
+body.dark-mode .fund-modal{
+    background:#1f2937;
+}
+
+body.dark-mode .fund-modal h2{
+    color:#fff;
+}
+
+body.dark-mode .fund-modal input{
+    background:#111827;
+    color:white;
+    border:1px solid #374151;
+}

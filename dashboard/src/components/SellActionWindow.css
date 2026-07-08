@@ -1,0 +1,12 @@
+.sell-window {
+  border-top: 3px solid #df514c;
+}
+
+.btn-red {
+  background: #df514c;
+  color: white;
+}
+
+.btn-red:hover {
+  background: #c43b36;
+}

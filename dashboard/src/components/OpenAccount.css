@@ -1,0 +1,266 @@
+/* ===========================
+   PAGE
+=========================== */
+
+.open-account{
+
+    min-height:100vh;
+
+    padding:40px;
+
+    background:#f7f9fc;
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+
+    text-align:center;
+
+    margin-bottom:40px;
+}
+
+.hero h1{
+
+    font-size:38px;
+
+    color:#222;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+}
+
+.hero p{
+
+    font-size:17px;
+
+    color:#666;
+}
+
+/* ===========================
+   PROGRESS BAR
+=========================== */
+
+.progress{
+
+    width:550px;
+
+    margin:0 auto 45px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+.step{
+
+    width:42px;
+    height:42px;
+
+    border-radius:50%;
+
+    background:#dbeafe;
+
+    color:#387ed1;
+
+    font-weight:700;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+}
+
+.step.active{
+
+    background:#387ed1;
+
+    color:white;
+}
+
+.line{
+
+    flex:1;
+
+    height:3px;
+
+    background:#d6d6d6;
+}
+
+/* ===========================
+   CARD
+=========================== */
+
+.form-card{
+
+    width:650px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.form-card h2{
+
+    margin-bottom:28px;
+
+    color:#222;
+}
+
+/* ===========================
+   INPUTS
+=========================== */
+
+.input-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:22px;
+}
+
+.input-group label{
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#444;
+}
+
+.input-group input{
+
+    height:50px;
+
+    border:1px solid #ddd;
+
+    border-radius:10px;
+
+    padding:0 16px;
+
+    font-size:15px;
+
+    transition:.25s;
+}
+
+.input-group input:focus{
+
+    outline:none;
+
+    border-color:#387ed1;
+
+    box-shadow:0 0 12px rgba(56,126,209,.15);
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.next-btn{
+
+    width:100%;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#387ed1;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.25s;
+}
+
+.next-btn:hover{
+
+    background:#2d6fc5;
+
+    transform:translateY(-2px);
+}
+
+/* ===========================
+   DARK MODE
+=========================== */
+
+body.dark-mode .open-account{
+
+    background:#0f172a;
+}
+
+body.dark-mode .hero h1{
+
+    color:white;
+}
+
+body.dark-mode .hero p{
+
+    color:#cbd5e1;
+}
+
+body.dark-mode .form-card{
+
+    background:#111827;
+
+    box-shadow:none;
+
+    border:1px solid #374151;
+}
+
+body.dark-mode .form-card h2{
+
+    color:white;
+}
+
+body.dark-mode .input-group label{
+
+    color:#d1d5db;
+}
+
+body.dark-mode .input-group input{
+
+    background:#1f2937;
+
+    color:white;
+
+    border:1px solid #374151;
+}
+
+body.dark-mode .line{
+
+    background:#374151;
+}
+
+body.dark-mode .step{
+
+    background:#374151;
+
+    color:white;
+}
+
+body.dark-mode .step.active{
+
+    background:#387ed1;
+}

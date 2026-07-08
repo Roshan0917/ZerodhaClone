@@ -1,0 +1,175 @@
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 25px;
+  color: #424242;
+}
+
+
+/* Empty State */
+
+.no-data {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+
+  color: #666;
+}
+
+
+.no-data h4 {
+  font-size: 22px;
+  margin-bottom: 8px;
+  color: #444;
+}
+
+
+.no-data p {
+  color: #888;
+}
+
+
+
+/* Table Container */
+
+.order-table {
+
+  background: white;
+
+  border-radius: 14px;
+
+  padding: 20px;
+
+  box-shadow:
+  0 4px 20px rgba(0,0,0,0.06);
+
+  overflow-x: auto;
+
+}
+
+
+
+
+table {
+
+  width:100%;
+
+  border-collapse: collapse;
+
+}
+
+
+
+
+thead {
+
+  background:#f8f9fa;
+
+}
+
+
+
+
+th {
+
+  text-align:left;
+
+  padding:16px;
+
+  font-size:14px;
+
+  color:#666;
+
+  font-weight:600;
+
+  border-bottom:1px solid #eee;
+
+}
+
+
+
+
+
+td {
+
+  padding:16px;
+
+  font-size:15px;
+
+  color:#333;
+
+  border-bottom:1px solid #f1f1f1;
+
+}
+
+
+
+
+
+tbody tr {
+
+  transition:0.2s;
+
+}
+
+
+
+tbody tr:hover {
+
+  background:#f8fbff;
+
+}
+
+
+
+
+
+/* Profit Loss */
+
+.profit {
+
+  color:#00a86b !important;
+
+  font-weight:600;
+
+}
+
+
+
+.loss {
+
+  color:#e53935 !important;
+
+  font-weight:600;
+
+}
+
+
+
+/* Responsive */
+
+@media(max-width:768px){
+
+  .order-table{
+
+    padding:10px;
+
+  }
+
+
+  th,td{
+
+    padding:12px;
+
+    font-size:13px;
+
+  }
+
+
+}

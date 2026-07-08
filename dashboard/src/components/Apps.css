@@ -1,0 +1,514 @@
+/* =========================
+   APPS PAGE LIGHT MODE
+========================= */
+
+.apps-page {
+  min-height: 100vh;
+  padding: 30px;
+  background: #f3f5f7;
+  transition: all 0.3s ease;
+}
+
+
+/* HEADER */
+
+.apps-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.apps-header h1 {
+  color: #1f2937;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+.apps-header p {
+  color: #6b7280;
+  font-size: 16px;
+}
+
+
+
+/* SEARCH */
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+
+.search-container input {
+
+  width: 60%;
+  padding: 14px 20px;
+
+  border-radius: 12px;
+
+  border: 1px solid #ddd;
+
+  background: white;
+
+  color:#111827;
+
+  outline:none;
+
+  font-size:16px;
+
+}
+
+
+
+/* STATS */
+
+.stats {
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(3,1fr);
+
+  gap:20px;
+
+  margin-bottom:40px;
+
+}
+
+
+.stat-card {
+
+  background:#ffffff;
+
+  padding:25px;
+
+  border-radius:16px;
+
+  text-align:center;
+
+  box-shadow:
+  0 5px 15px rgba(0,0,0,0.06);
+
+  transition:.3s;
+
+}
+
+
+
+.stat-card:hover {
+
+ transform:translateY(-5px);
+
+}
+
+
+
+.stat-card h2 {
+
+ margin:0;
+
+ color:#387ed1;
+
+ font-size:30px;
+
+}
+
+
+
+.stat-card p {
+
+ margin-top:8px;
+
+ color:#6b7280;
+
+}
+
+
+
+/* SECTION TITLE */
+
+
+.section-title {
+
+ margin:30px 0 20px;
+
+ color:#1f2937;
+
+ font-size:24px;
+
+ font-weight:700;
+
+}
+
+
+
+/* GRID */
+
+
+.apps-grid {
+
+ display:grid;
+
+ grid-template-columns:
+ repeat(auto-fit,minmax(260px,1fr));
+
+ gap:22px;
+
+}
+
+
+
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+
+body.dark-mode .apps-page {
+
+ background:#0b1220;
+
+}
+
+
+
+/* HEADER */
+
+
+body.dark-mode .apps-header h1 {
+
+ color:#f9fafb;
+
+}
+
+
+body.dark-mode .apps-header p {
+
+ color:#94a3b8;
+
+}
+
+
+
+
+/* SEARCH */
+
+
+body.dark-mode .search-container input {
+
+ background:#111827;
+
+ border:1px solid #334155;
+
+ color:#f9fafb;
+
+}
+
+
+
+body.dark-mode .search-container input::placeholder {
+
+ color:#94a3b8;
+
+}
+
+
+
+
+
+/* STATS CARD */
+
+
+body.dark-mode .stat-card {
+
+ background:#111827;
+
+ box-shadow:
+ 0 8px 20px rgba(0,0,0,.4);
+
+}
+
+
+
+body.dark-mode .stat-card h2 {
+
+ color:#60a5fa;
+
+}
+
+
+
+body.dark-mode .stat-card p {
+
+ color:#cbd5e1;
+
+}
+
+
+
+/* SECTION TITLE */
+
+
+body.dark-mode .section-title {
+
+ color:#f9fafb;
+
+}
+
+
+
+
+/* MOBILE */
+
+
+@media(max-width:768px){
+
+
+.stats{
+
+grid-template-columns:1fr;
+
+}
+
+
+.search-container input{
+
+width:100%;
+
+}
+
+
+.apps-page{
+
+padding:15px;
+
+}
+
+
+}
+
+/* =========================
+   APP CARD LIGHT MODE
+========================= */
+
+
+.app-card {
+
+  background:#ffffff;
+
+  border-radius:16px;
+
+  padding:22px;
+
+  display:flex;
+
+  gap:18px;
+
+  box-shadow:
+  0 5px 18px rgba(0,0,0,0.08);
+
+  transition:.3s;
+
+}
+
+
+.app-card:hover {
+
+ transform:translateY(-5px);
+
+ box-shadow:
+ 0 12px 30px rgba(0,0,0,0.15);
+
+}
+
+
+
+.app-logo {
+
+ width:55px;
+
+ height:55px;
+
+ border-radius:14px;
+
+ background:#eaf3ff;
+
+ color:#387ed1;
+
+ display:flex;
+
+ align-items:center;
+
+ justify-content:center;
+
+ font-size:28px;
+
+ flex-shrink:0;
+
+}
+
+
+
+.app-content h3 {
+
+ margin:0;
+
+ color:#1f2937;
+
+ font-size:20px;
+
+ font-weight:700;
+
+}
+
+
+
+.category {
+
+ display:inline-block;
+
+ margin-top:8px;
+
+ padding:5px 12px;
+
+ border-radius:20px;
+
+ background:#f1f5f9;
+
+ color:#475569;
+
+ font-size:12px;
+
+ font-weight:600;
+
+}
+
+
+
+.app-content p {
+
+ margin-top:14px;
+
+ color:#6b7280;
+
+ font-size:14px;
+
+ line-height:1.6;
+
+}
+
+
+
+.launch-btn {
+
+ display:inline-block;
+
+ margin-top:12px;
+
+ padding:9px 18px;
+
+ border-radius:10px;
+
+ background:#387ed1;
+
+ color:white;
+
+ text-decoration:none;
+
+ font-size:14px;
+
+ font-weight:600;
+
+ transition:.3s;
+
+}
+
+
+.launch-btn:hover {
+
+ background:#285ea8;
+
+ color:white;
+
+}
+
+
+
+
+
+/* =========================
+   DARK MODE APP CARD
+========================= */
+
+
+body.dark-mode .app-card {
+
+ background:#111827;
+
+ box-shadow:
+ 0 8px 20px rgba(0,0,0,.45);
+
+}
+
+
+
+body.dark-mode .app-card:hover {
+
+ background:#1e293b;
+
+}
+
+
+
+body.dark-mode .app-logo {
+
+ background:#1e3a5f;
+
+ color:#60a5fa;
+
+}
+
+
+
+body.dark-mode .app-content h3 {
+
+ color:#f9fafb;
+
+}
+
+
+
+body.dark-mode .category {
+
+ background:#334155;
+
+ color:#cbd5e1;
+
+}
+
+
+
+body.dark-mode .app-content p {
+
+ color:#94a3b8;
+
+}
+
+
+
+body.dark-mode .launch-btn {
+
+ background:#2563eb;
+
+ color:white;
+
+}
+
+
+
+body.dark-mode .launch-btn:hover {
+
+ background:#1d4ed8;
+
+}

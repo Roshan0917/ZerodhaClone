@@ -1,0 +1,315 @@
+/* =========================
+   GLOBAL
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:"Inter","Segoe UI",sans-serif;
+  background:#ffffff;
+  color:#424242;
+  overflow:hidden;
+}
+
+a{
+  text-decoration:none;
+}
+
+/* =========================
+   DASHBOARD LAYOUT
+========================= */
+
+.dashboard-container{
+  display:flex;
+  width:100%;
+  height:calc(100vh - 70px);
+  margin-top:70px;
+  background:#ffffff;
+}
+
+.content{
+  flex:1;
+  height:100%;
+  overflow-y:auto;
+  overflow-x:hidden;
+  padding:30px;
+  background:#ffffff;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile{
+  display:flex;
+  align-items:center;
+  cursor:pointer;
+}
+
+.avatar{
+  width:34px;
+  height:34px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-right:10px;
+  background:#e8f0ff;
+  color:#387ed1;
+  font-weight:600;
+}
+
+.username{
+  font-size:14px;
+  color:#555;
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.theme-btn{
+  border:none;
+  background:#387ed1;
+  color:#fff;
+  padding:9px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.theme-btn:hover{
+  opacity:.9;
+}
+
+/* =========================
+   WATCHLIST
+========================= */
+
+.watchlist-container{
+  width:340px;
+  min-width:340px;
+  height:100%;
+  overflow-y:auto;
+  background:#ffffff;
+  border-right:1px solid #e5e7eb;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-container{
+  position:sticky;
+  top:0;
+  z-index:10;
+  padding:15px;
+  background:#ffffff;
+}
+
+.search{
+  width:100%;
+  padding:12px 15px;
+  border-radius:10px;
+  border:1px solid #dcdcdc;
+  background:#f7f7f7;
+  color:#424242;
+}
+
+.search:focus{
+  outline:none;
+  border-color:#387ed1;
+  background:#ffffff;
+}
+
+.search::placeholder{
+  color:#999;
+}
+
+.counts{
+  margin-top:8px;
+  display:block;
+  font-size:13px;
+  color:#888;
+}
+
+/* =========================
+   LIST
+========================= */
+
+.list{
+  list-style:none;
+}
+
+.list li{
+  position:relative;
+  padding:14px 16px;
+  border-bottom:1px solid #f1f1f1;
+  transition:.25s;
+}
+
+.list li:hover{
+  background:#f8f9fc;
+}
+
+.item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.itemInfo{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.item p{
+  font-size:14px;
+  font-weight:600;
+}
+
+.price{
+  font-weight:600;
+}
+
+/* =========================
+   COLORS
+========================= */
+
+.up{
+  color:#22c55e;
+}
+
+.down{
+  color:#ef4444;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.actions{
+  position:absolute;
+  right:15px;
+  top:50%;
+  transform:translateY(-50%);
+}
+
+.buy{
+  background:#387ed1;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  padding:7px 15px;
+  margin-right:8px;
+  cursor:pointer;
+}
+
+.sell{
+  background:#ff5722;
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  padding:7px 15px;
+  margin-right:8px;
+  cursor:pointer;
+}
+
+.action{
+  width:38px;
+  height:34px;
+  border-radius:8px;
+  border:1px solid #ddd;
+  background:#fff;
+  cursor:pointer;
+}
+
+.icon{
+  font-size:18px;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark-mode{
+  background:#111827;
+  color:#f3f4f6;
+}
+
+body.dark-mode .dashboard-container{
+  background:#111827;
+}
+
+body.dark-mode .content{
+  background:#111827;
+}
+
+body.dark-mode .watchlist-container{
+  background:#111827;
+  border-right:1px solid #374151;
+}
+
+body.dark-mode .search-container{
+  background:#111827;
+}
+
+body.dark-mode .search{
+  background:#1f2937;
+  border-color:#374151;
+  color:#f3f4f6;
+}
+
+body.dark-mode .search::placeholder{
+  color:#94a3b8;
+}
+
+body.dark-mode .counts{
+  color:#94a3b8;
+}
+
+body.dark-mode .list li{
+  border-bottom:1px solid #374151;
+}
+
+body.dark-mode .list li:hover{
+  background:#1f2937;
+}
+
+body.dark-mode .avatar{
+  background:#387ed1;
+  color:#fff;
+}
+
+body.dark-mode .action{
+  background:#1f2937;
+  border-color:#374151;
+}
+
+body.dark-mode .icon{
+  color:#fff;
+}
+
+body.dark-mode table{
+  background:#1f2937;
+  color:#f3f4f6;
+}
+
+body.dark-mode th{
+  background:#111827 !important;
+  color:#cbd5e1 !important;
+}
+
+body.dark-mode td{
+  color:#f3f4f6;
+  border-color:#374151 !important;
+}
+
+body.dark-mode tr:hover{
+  background:#243244 !important;
+}

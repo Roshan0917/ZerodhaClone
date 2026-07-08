@@ -1,0 +1,80 @@
+.welcome-card{
+    background:linear-gradient(135deg,#387ed1,#5ca7ff);
+    color:white;
+    padding:35px;
+    border-radius:20px;
+    margin-bottom:30px;
+}
+
+.welcome-card h2{
+    margin-bottom:8px;
+    font-size:32px;
+}
+
+.welcome-card p{
+    opacity:.9;
+}
+
+.summary-grid{
+
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+
+}
+
+.summary-card{
+
+    background:white;
+    border-radius:18px;
+    padding:30px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.summary-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.summary-card p{
+
+    color:#888;
+    margin-bottom:12px;
+
+}
+
+.summary-card h2{
+
+    font-size:30px;
+
+}
+
+.profit{
+
+    color:#00b386;
+
+}
+
+@media(max-width:1200px){
+
+.summary-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:700px){
+
+.summary-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}

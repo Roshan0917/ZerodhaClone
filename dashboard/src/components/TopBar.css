@@ -1,0 +1,112 @@
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar-container{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+
+    height:70px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:0 25px;
+
+    background:#ffffff;
+
+    border-bottom:1px solid #e5e7eb;
+
+    z-index:1000;
+
+    box-shadow:none;
+}
+
+/* =========================
+   INDICES
+========================= */
+
+.indices-container{
+    display:flex;
+    align-items:center;
+    gap:28px;
+}
+
+.index-box{
+    display:flex;
+    flex-direction:column;
+
+    padding:8px 12px;
+
+    border-radius:10px;
+
+    transition:.25s ease;
+}
+
+.index-box:hover{
+    background:#f3f4f6;
+}
+
+.index-name{
+    font-size:11px;
+    font-weight:600;
+    color:#6b7280;
+    margin-bottom:2px;
+}
+
+.index-values{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.index-value{
+    font-size:14px;
+    font-weight:700;
+    color:#111827;
+}
+
+.index-change{
+    font-size:13px;
+    font-weight:600;
+}
+
+.index-change.up{
+    color:#16a34a;
+}
+
+.index-change.down{
+    color:#ef4444;
+}
+
+/* =========================
+   DARK MODE
+========================= */
+
+body.dark-mode .topbar-container{
+    background:#111827;
+    border-bottom:1px solid #374151;
+}
+
+body.dark-mode .index-box:hover{
+    background:#1f2937;
+}
+
+body.dark-mode .index-name{
+    color:#9ca3af;
+}
+
+body.dark-mode .index-value{
+    color:#f9fafb;
+}
+
+body.dark-mode .index-change.up{
+    color:#22c55e;
+}
+
+body.dark-mode .index-change.down{
+    color:#ef4444;
+}
