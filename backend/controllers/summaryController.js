@@ -2,135 +2,72 @@ const { UserModel } = require("../models/UserModel");
 const { HoldingsModel } = require("../models/HoldingsModel");
 const YahooFinance = require("yahoo-finance2").default;
 
-
 const yahooFinance = new YahooFinance();
-
 
 // ================= SUMMARY =================
 
 exports.getSummary = async (req, res) => {
-
   try {
-
     const user = await UserModel.findById(req.params.userId);
 
-
     if (!user) {
-      return res.status(404).send("User not found");
+      return res.status(404).json({
+        message: "User not found",
+      });
     }
-
-
 
     const holdings = await HoldingsModel.find({
       userId: req.params.userId,
     });
 
-
-
     let investment = 0;
     let currentValue = 0;
 
+    for (const stock of holdings) {
+      investment += Number(stock.avg) * Number(stock.qty);
 
-
-    for (let stock of holdings) {
-
-
-      let livePrice = stock.price;
-
-
+      let livePrice = Number(stock.price);
 
       try {
+        const quote = await Promise.race([
+          yahooFinance.quote(`${stock.name}.NS`),
+          new Promise((_, reject) =>
+            setTimeout(() => reject(new Error("Timeout")), 2000)
+          ),
+        ]);
 
-
-        const quote = await yahooFinance.quote(
-          `${stock.name}.NS`
-        );
-
-
-        if (quote.regularMarketPrice) {
-
-          livePrice = quote.regularMarketPrice;
-
+        if (quote && quote.regularMarketPrice) {
+          livePrice = Number(quote.regularMarketPrice);
         }
-
-
       } catch (err) {
-
         console.log(
-          "Price Error:",
-          stock.name
+          `Live price unavailable for ${stock.name}, using DB price`
         );
-
       }
 
-
-
-
-
-      investment += stock.avg * stock.qty;
-
-
-      currentValue += livePrice * stock.qty;
-
-
-
+      currentValue += livePrice * Number(stock.qty);
     }
-
-
-
 
     const pnl = currentValue - investment;
 
-
-
     const pnlPercent =
-      investment > 0
-        ? (pnl / investment) * 100
-        : 0;
+      investment > 0 ? (pnl / investment) * 100 : 0;
 
-
-
-
-    res.json({
-
-      fullname: user.fullname,
-
-
-      availableMargin: user.availableMargin,
-
-
-      usedMargin: user.usedMargin,
-
-
+    return res.json({
+      fullname: user.fullname || "",
+      availableMargin: user.availableMargin || 0,
+      usedMargin: user.usedMargin || 0,
       holdingsCount: holdings.length,
-
-
-      investment: investment,
-
-
-      currentValue: currentValue,
-
-
-      pnl: pnl,
-
-
-      pnlPercent: pnlPercent,
-
-
+      investment,
+      currentValue,
+      pnl,
+      pnlPercent,
     });
-
-
-
   } catch (err) {
+    console.log("SUMMARY ERROR:", err);
 
-
-    console.log(err);
-
-
-    res.status(500).send("Server Error");
-
-
+    return res.status(500).json({
+      message: "Server Error",
+    });
   }
-
-
 };
