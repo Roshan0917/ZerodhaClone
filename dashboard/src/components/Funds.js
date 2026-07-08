@@ -5,7 +5,9 @@ import "./Funds.css";
 
 const Funds = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(
+  localStorage.getItem("user")
+) || null;
   const [funds, setFunds] = useState({
     availableMargin: 0,
     usedMargin: 0,
@@ -18,19 +20,50 @@ const [amount, setAmount] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!user) return;
 
-    Promise.all([
-      axios.get(`https://zerodhaclone-backend-b7nd.onrender.com/funds/${user._id}`),
-      axios.get(`https://zerodhaclone-backend-b7nd.onrender.com/account/status/${user._id}`)
-    ])
-      .then(([fundRes, accRes]) => {
-        setFunds(fundRes.data);
-        setAccount(accRes.data);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => setLoading(false));
-  }, []);
+  const fetchFunds = async () => {
+
+    if (!user) {
+      setLoading(false);
+      return;
+    }
+
+    try {
+
+      const [fundRes, accRes] = await Promise.all([
+
+        axios.get(
+          `https://zerodhaclone-backend-b7nd.onrender.com/funds/${user._id}`
+        ),
+
+        axios.get(
+          `https://zerodhaclone-backend-b7nd.onrender.com/account/status/${user._id}`
+        )
+
+      ]);
+
+
+      setFunds(fundRes.data);
+      setAccount(accRes.data);
+
+
+    } catch(err) {
+
+      console.log(err);
+
+    } finally {
+
+      setLoading(false);
+
+    }
+
+  };
+
+
+  fetchFunds();
+
+
+}, [user]);
 
   return (
     <div className="funds-page">
