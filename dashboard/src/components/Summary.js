@@ -16,20 +16,22 @@ const Summary = () => {
     }
 
     const fetchSummary = async () => {
-      try {
-        const res = await axios.get(
-          `https://zerodhaclone-backend-b7nd.onrender.com/summary/${user._id}`
-        );
+  try {
+    const res = await axios.get(
+      `https://zerodhaclone-backend-b7nd.onrender.com/summary/${user._id}`
+    );
 
-        console.log("SUMMARY RESPONSE:", res.data);
+    console.log("SUCCESS:", res.data);
 
-        setSummary(res.data);
-      } catch (err) {
-        console.log("SUMMARY ERROR:", err);
-      } finally {
-        setLoading(false);
-      }
-    };
+    setSummary(res.data);
+  } catch (err) {
+    console.log("FULL ERROR:", err);
+    console.log("RESPONSE:", err.response);
+    console.log("DATA:", err.response?.data);
+  } finally {
+    setLoading(false);
+  }
+};
 
     fetchSummary();
 
@@ -45,6 +47,9 @@ const Summary = () => {
   if (!summary) {
     return <h2>No Data Found</h2>;
   }
+
+  console.log("CURRENT SUMMARY =", summary);
+console.log("LOADING =", loading);
 
   return (
     <div>
