@@ -1,5 +1,4 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
 
 import Apps from "./Apps";
 import Funds from "./Funds";
@@ -20,16 +19,7 @@ const Dashboard = () => {
       </GeneralContextProvider>
 
       <div className="content">
-        <Routes>
-          <Route index element={<Summary />} />
-          <Route path="orders" element={<Orders />} />
-          <Route path="holdings" element={<Holdings />} />
-          <Route path="positions" element={<Positions />} />
-          <Route path="funds" element={<Funds />} />
-          <Route path="open-account" element={<OpenAccount />} />
-          <Route path="/admin" element={<AdminPanel />} />
-          <Route path="apps" element={<Apps />} />
-        </Routes>
+        <Summary />
       </div>
     </div>
   );

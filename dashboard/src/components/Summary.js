@@ -3,7 +3,7 @@ import axios from "axios";
 import "./Summary.css";
 
 const Summary = () => {
-
+console.log("SUMMARY COMPONENT MOUNTED");
   const [summary, setSummary] = useState(null);
 
 
