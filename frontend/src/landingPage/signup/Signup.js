@@ -40,7 +40,7 @@ const SignUp = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:3002/signup",
+        "https://zerodhaclone-backend-b7nd.onrender.com/signup",
         {
           fullname,
           email,

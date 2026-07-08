@@ -21,8 +21,8 @@ const [amount, setAmount] = useState("");
     if (!user) return;
 
     Promise.all([
-      axios.get(`http://localhost:3002/funds/${user._id}`),
-      axios.get(`http://localhost:3002/account/status/${user._id}`)
+      axios.get(`https://zerodhaclone-backend-b7nd.onrender.com/funds/${user._id}`),
+      axios.get(`https://zerodhaclone-backend-b7nd.onrender.com/account/status/${user._id}`)
     ])
       .then(([fundRes, accRes]) => {
         setFunds(fundRes.data);
@@ -164,7 +164,7 @@ const [amount, setAmount] = useState("");
           className="green-btn"
          onClick={() => {
 
-  axios.put("http://localhost:3002/funds/add", {
+  axios.put("https://zerodhaclone-backend-b7nd.onrender.com/funds/add", {
     userId: user._id,
     amount: Number(amount)
   })
@@ -226,7 +226,7 @@ const [amount, setAmount] = useState("");
           className="blue-btn"
           onClick={() => {
 
- axios.put("http://localhost:3002/funds/withdraw", {
+ axios.put("https://zerodhaclone-backend-b7nd.onrender.com/funds/withdraw", {
 
     userId:user._id,
     amount:Number(amount)

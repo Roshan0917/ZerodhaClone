@@ -15,7 +15,7 @@ const Positions = () => {
 
 
     axios
-      .get(`http://localhost:3002/allPositions/${user._id}`)
+      .get(`https://zerodhaclone-backend-b7nd.onrender.com/allPositions/${user._id}`)
       .then((res) => {
 
         setPositions(res.data);

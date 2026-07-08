@@ -31,7 +31,7 @@ const Login = () => {
       setLoading(true);
 
       const res = await axios.post(
-        "http://localhost:3002/login",
+        "https://zerodhaclone-backend-b7nd.onrender.com/login",
         {
           email,
           password,
@@ -45,7 +45,7 @@ const Login = () => {
 
       setTimeout(() => {
         window.location.href =
-          `http://localhost:3001/?token=${token}&user=${encodeURIComponent(
+          `https://zerodhaclone-backend-b7nd.onrender.com?token=${token}&user=${encodeURIComponent(
             user
           )}`;
       }, 1200);

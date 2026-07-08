@@ -12,7 +12,7 @@ const Holdings = () => {
     if (!user) return;
 
     axios
-      .get(`http://localhost:3002/allHoldings/${user._id}`)
+      .get(`https://zerodhaclone-backend-b7nd.onrender.com/allHoldings/${user._id}`)
       .then((res) => setAllHoldings(res.data))
       .catch((err) => console.log(err));
   }, []);

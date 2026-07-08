@@ -18,7 +18,7 @@ const Summary = () => {
   const fetchSummary = () => {
 
     axios
-      .get(`http://localhost:3002/summary/${user._id}`)
+      .get(`https://zerodhaclone-backend-b7nd.onrender.com/summary/${user._id}`)
       .then((res) => {
 
         setSummary(res.data);

@@ -11,7 +11,7 @@ const Orders = () => {
     if (!user) return;
 
     axios
-      .get(`http://localhost:3002/allOrders/${user._id}`)
+      .get(`https://zerodhaclone-backend-b7nd.onrender.com/allOrders/${user._id}`)
       .then((res) => setOrders(res.data))
       .catch((err) => console.log(err));
   }, []);

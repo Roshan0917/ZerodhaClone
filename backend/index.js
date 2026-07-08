@@ -80,6 +80,10 @@ app.use("/admin", adminRoutes);
 //                DATABASE & SERVER START
 // ======================================================
 
+app.get("/", (req,res)=>{
+  res.send("Zerodha Clone Backend Running 🚀");
+});
+
 mongoose
   .connect(MONGO_URL)
   .then(() => {

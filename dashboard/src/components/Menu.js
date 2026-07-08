@@ -29,7 +29,7 @@ const Menu = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
 
-    window.location.href = "http://localhost:3000/login";
+    window.location.href = "https://zerodhaclone-backend-b7nd.onrender.com/login";
   };
 
   const isActive = (path) => location.pathname === path;

@@ -39,7 +39,7 @@ const WatchList = () => {
 
 
         const res = await axios.get(
-          "http://localhost:3002/stocks"
+          "https://zerodhaclone-backend-b7nd.onrender.com/stocks"
         );
 
 

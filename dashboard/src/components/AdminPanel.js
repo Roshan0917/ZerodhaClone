@@ -5,7 +5,7 @@ const AdminPanel = () => {
   const [accounts, setAccounts] = useState([]);
 
   const fetchAccounts = async () => {
-    const res = await axios.get("http://localhost:3002/admin/accounts");
+    const res = await axios.get("https://zerodhaclone-backend-b7nd.onrender.com/admin/accounts");
     setAccounts(res.data);
   };
 
@@ -14,12 +14,12 @@ const AdminPanel = () => {
   }, []);
 
   const approve = async (id) => {
-    await axios.post(`http://localhost:3002/admin/approve/${id}`);
+    await axios.post(`https://zerodhaclone-backend-b7nd.onrender.com/admin/approve/${id}`);
     fetchAccounts();
   };
 
   const reject = async (id) => {
-    await axios.post(`http://localhost:3002/admin/reject/${id}`);
+    await axios.post(`https://zerodhaclone-backend-b7nd.onrender.com/admin/reject/${id}`);
     fetchAccounts();
   };
 

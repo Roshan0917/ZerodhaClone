@@ -31,7 +31,7 @@ const OpenAccount = () => {
   try {
     const token = localStorage.getItem("token");
 
-    const res = await fetch("http://localhost:3002/api/account/open", {
+    const res = await fetch("https://zerodhaclone-backend-b7nd.onrender.com/api/account/open", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
