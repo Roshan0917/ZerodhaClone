@@ -514,3 +514,21 @@ body.dark-mode .category{
 
 
 }
+
+/* REMOVE LINK UNDERLINE */
+.launch-btn{
+  display:inline-block;
+  padding:9px 18px;
+  border-radius:10px;
+  background:#387ed1;
+  color:white;
+  font-size:14px;
+  font-weight:600;
+  transition:.3s;
+  text-decoration:none;
+}
+
+.launch-btn:hover{
+  background:#2563eb;
+  text-decoration:none;
+}
