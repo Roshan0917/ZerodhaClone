@@ -10,29 +10,63 @@ import Funds from "./Funds";
 import Apps from "./Apps";
 import OpenAccount from "./OpenAccount";
 import AdminPanel from "./AdminPanel";
+
 import { GeneralContextProvider } from "./GeneralContext";
 
+
 const Dashboard = () => {
+
   return (
+
     <div className="dashboard-container">
+
+
       <GeneralContextProvider>
-        <WatchList />
+
+        <div className="watchlist-container">
+
+          <WatchList />
+
+        </div>
+
+
       </GeneralContextProvider>
 
+
+
+
       <div className="content">
+
+
         <Routes>
+
           <Route index element={<Summary />} />
+
           <Route path="orders" element={<Orders />} />
+
           <Route path="holdings" element={<Holdings />} />
+
           <Route path="positions" element={<Positions />} />
+
           <Route path="funds" element={<Funds />} />
+
           <Route path="apps" element={<Apps />} />
+
           <Route path="open-account" element={<OpenAccount />} />
+
           <Route path="admin" element={<AdminPanel />} />
+
         </Routes>
+
+
       </div>
+
+
     </div>
+
   );
+
 };
+
 
 export default Dashboard;

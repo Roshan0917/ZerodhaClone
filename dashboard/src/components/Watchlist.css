@@ -1,20 +1,27 @@
- /* =========================
-   WATCHLIST LIGHT MODE
+/* =========================
+   WATCHLIST
 ========================= */
 
 
 .watchlist{
-  height:100%;
+
+  width:100%;
+
   padding:24px;
+
   background:#f3f5f7;
-  transition:.3s ease;
+
+  min-height:max-content;
+
 }
+
+
 
 
 
 /* HEADER */
 
-.watchlist-header {
+.watchlist-header{
 
   display:flex;
 
@@ -27,28 +34,24 @@
 }
 
 
-
-.watchlist-header h2 {
-
-  margin:0;
+.watchlist-header h2{
 
   color:#1f2937;
 
   font-size:24px;
 
-  font-weight:700;
-
 }
 
 
 
-.watchlist-header span {
+.watchlist-header span{
 
   color:#6b7280;
 
-  font-size:14px;
-
 }
+
+
+
 
 
 
@@ -56,7 +59,7 @@
 /* SEARCH */
 
 
-.search-box {
+.search-box{
 
   display:flex;
 
@@ -64,13 +67,13 @@
 
   gap:10px;
 
-  background:#ffffff;
-
   padding:12px 15px;
 
-  border-radius:12px;
+  background:white;
 
   border:1px solid #e5e7eb;
+
+  border-radius:12px;
 
   margin-bottom:20px;
 
@@ -78,7 +81,7 @@
 
 
 
-.search-box input {
+.search-box input{
 
   width:100%;
 
@@ -88,19 +91,10 @@
 
   background:transparent;
 
-  color:#111827;
-
-  font-size:15px;
-
 }
 
 
 
-.search-icon {
-
-  color:#6b7280;
-
-}
 
 
 
@@ -108,7 +102,7 @@
 /* STOCK LIST */
 
 
-.watchlist-items {
+.watchlist-items{
 
   display:flex;
 
@@ -120,10 +114,12 @@
 
 
 
+
+
 /* STOCK CARD */
 
 
-.watch-item {
+.watch-item{
 
   position:relative;
 
@@ -135,101 +131,56 @@
 
   padding:18px;
 
-  background:#ffffff;
+  background:white;
 
   border-radius:14px;
 
   border:1px solid #edf1f7;
 
-  box-shadow:
-  0 3px 12px rgba(0,0,0,.06);
-
-  transition:.3s;
-
-  overflow:visible;
-  
-  margin-bottom:10px;
+  box-shadow:0 3px 12px rgba(0,0,0,.06);
 
 }
 
 
 
-.watch-item:hover {
-
-  transform:translateY(-3px);
-
-  box-shadow:
-  0 10px 25px rgba(0,0,0,.12);
-
-}
 
 
 
-/* LEFT */
-
-
-.stock-left h4 {
+.stock-left h4{
 
   margin:0;
 
   color:#1f2937;
 
-  font-size:17px;
-
-  font-weight:700;
-
 }
 
 
 
-.up {
-
-  color:#16a34a;
-
-  font-size:14px;
-
-  font-weight:600;
-
-}
-
-
-
-.down {
-
-  color:#dc2626;
-
-  font-size:14px;
-
-  font-weight:600;
-
-}
-
-
-
-/* RIGHT */
-
-
-.stock-right {
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-}
-
-
-
-.stock-right h3 {
+.stock-right h3{
 
   margin:0;
 
   color:#111827;
 
-  font-size:18px;
+}
+
+
+
+.up{
+
+  color:#16a34a;
 
 }
+
+
+
+.down{
+
+  color:#dc2626;
+
+}
+
+
 
 
 
@@ -237,11 +188,11 @@
 /* ACTIONS */
 
 
-.watch-actions {
+.watch-actions{
 
   position:absolute;
 
-  right:15px;
+  right:10px;
 
   top:50%;
 
@@ -249,28 +200,24 @@
 
   display:flex;
 
-  align-items:center;
-
-  gap:10px;
+  gap:8px;
 
   padding:8px;
 
-  background:#ffffff;
+  background:white;
 
   border-radius:12px;
 
-  box-shadow:
-  0 8px 20px rgba(0,0,0,.15);
-
-  z-index:20;
+  z-index:5;
 
 }
 
 
 
+
 .buy-btn,
 .sell-btn,
-.icon-btn {
+.icon-btn{
 
   border:none;
 
@@ -280,72 +227,76 @@
 
   cursor:pointer;
 
-  font-size:12px;
+}
 
-  font-weight:700;
 
-  min-width:45px;
+
+.buy-btn{
+
+  background:#dcfce7;
+
+  color:#166534;
 
 }
 
 
 
-.buy-btn {
+.sell-btn{
 
-  background:#e8f5e9;
+  background:#fee2e2;
 
-  color:#2e7d32;
-
-}
-
-
-
-.sell-btn {
-
-  background:#ffebee;
-
-  color:#d32f2f;
+  color:#991b1b;
 
 }
 
 
 
-.icon-btn {
+.icon-btn{
 
   background:#f1f5f9;
 
-  color:#334155;
-
 }
 
 
 
-/* CHART */
 
 
-.portfolio-chart {
+
+/* =========================
+   CHART
+========================= */
+
+
+.portfolio-chart{
 
   margin-top:30px;
 
   padding:20px;
 
-  background:#ffffff;
+  background:white;
 
   border-radius:16px;
 
   border:1px solid #edf1f7;
 
-}
-
-
-
-.portfolio-chart h3 {
-
-  color:#1f2937;
-
-  font-size:20px;
+  height:380px;
 
 }
+
+
+
+
+
+.doughnut-wrapper{
+
+  width:100%;
+
+  height:280px;
+
+  position:relative;
+
+}
+
 
 
 
@@ -356,187 +307,37 @@
 ========================= */
 
 
-
-body.dark-mode .watchlist {
+body.dark-mode .watchlist{
 
   background:#0b1220;
 
 }
 
 
-
-/* HEADER */
-
-
-body.dark-mode .watchlist-header h2 {
-
-  color:#f9fafb;
-
-}
-
-
-body.dark-mode .watchlist-header span {
-
-  color:#94a3b8;
-
-}
-
-
-
-
-
-/* SEARCH */
-
-
-body.dark-mode .search-box {
+body.dark-mode .watch-item,
+body.dark-mode .portfolio-chart,
+body.dark-mode .search-box{
 
   background:#111827;
 
-  border:1px solid #334155;
+  border-color:#1e293b;
 
 }
 
 
 
-body.dark-mode .search-box input {
+body.dark-mode .watchlist-header h2,
+body.dark-mode .stock-left h4,
+body.dark-mode .stock-right h3,
+body.dark-mode .portfolio-chart h3{
 
   color:#f9fafb;
 
 }
 
 
-
-body.dark-mode .search-box input::placeholder {
-
-  color:#94a3b8;
-
-}
-
-
-
-body.dark-mode .search-icon {
-
-  color:#94a3b8;
-
-}
-
-
-
-
-/* CARD */
-
-
-body.dark-mode .watch-item {
+body.dark-mode .watch-actions{
 
   background:#111827;
-
-  border:1px solid #1e293b;
-
-  box-shadow:
-  0 8px 20px rgba(0,0,0,.45);
-
-}
-
-
-
-body.dark-mode .watch-item:hover {
-
-  background:#1e293b;
-
-}
-
-
-
-/* TEXT */
-
-
-body.dark-mode .stock-left h4 {
-
-  color:#f9fafb;
-
-}
-
-
-
-body.dark-mode .stock-right h3 {
-
-  color:#f9fafb;
-
-}
-
-
-
-
-/* ACTIONS */
-
-body.dark-mode .watch-actions {
-
-  background:#111827;
-
-  box-shadow:
-  0 8px 20px rgba(0,0,0,.5);
-
-}
-
-
-
-body.dark-mode .icon-btn {
-
-  background:#1e293b;
-
-  color:#e5e7eb;
-
-}
-
-
-
-body.dark-mode .icon-btn:hover {
-
-  background:#334155;
-
-}
-
-
-
-/* BUY SELL */
-
-
-body.dark-mode .buy-btn {
-
-  background:#166534;
-
-  color:#dcfce7;
-
-}
-
-
-
-body.dark-mode .sell-btn {
-
-  background:#991b1b;
-
-  color:#fee2e2;
-
-}
-
-
-
-
-/* CHART */
-
-
-body.dark-mode .portfolio-chart {
-
-  background:#111827;
-
-  border:1px solid #1e293b;
-
-}
-
-
-
-body.dark-mode .portfolio-chart h3 {
-
-  color:#f9fafb;
 
 }
