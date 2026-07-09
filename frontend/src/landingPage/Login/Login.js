@@ -13,60 +13,57 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [showPassword, setShowPassword] =
-    useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
 
-  const [loading, setLoading] =
-    useState(false);
+  const handleLogin = async (e) => {
+    e.preventDefault();
 
-const handleLogin = async (e) => {
-  e.preventDefault();
+    if (!email || !password) {
+      toast.error("Please fill all fields");
+      return;
+    }
 
-  if (!email || !password) {
-    toast.error("Please fill all fields");
-    return;
-  }
+    try {
+      setLoading(true);
 
-  try {
-    setLoading(true);
+      const res = await axios.post(
+        "https://zerodhaclone-backend-b7nd.onrender.com/login",
+        {
+          email,
+          password,
+        }
+      );
 
-    const res = await axios.post(
-      "https://zerodhaclone-backend-b7nd.onrender.com/login",
-      {
-        email,
-        password,
-      }
-    );
+      toast.success("Login Successful 🎉");
 
-    toast.success("Login Successful 🎉");
+      const token = res.data.token;
+      const user = res.data.user;
 
-    const token = res.data.token;
-    const user = res.data.user;
+      // Save locally
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
 
-    // Temporary save (same project ke liye useful)
-    localStorage.setItem("token", token);
-    localStorage.setItem("user", JSON.stringify(user));
+      // Redirect to Dashboard
+      setTimeout(() => {
+        window.location.href =
+          `https://zerodha-clone-gea5k5n0h-beast17.vercel.app/?token=${encodeURIComponent(
+            token
+          )}&user=${encodeURIComponent(JSON.stringify(user))}`;
+      }, 1200);
 
-    // Dashboard project par redirect
-    setTimeout(() => {
-      window.location.href =
-        `https://zerodha-clone-gea5k5n0h-beast17.vercel.app/?token=${encodeURIComponent(
-          token
-        )}&userId=${user._id}`;
-    }, 1200);
+    } catch (err) {
+      console.log(err);
 
-  } catch (err) {
-    console.log(err);
-
-    toast.error(
-      err.response?.data?.message ||
-      err.response?.data ||
-      "Invalid Email or Password"
-    );
-  } finally {
-    setLoading(false);
-  }
-};
+      toast.error(
+        err.response?.data?.message ||
+          err.response?.data ||
+          "Invalid Email or Password"
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <div className="login-page">
@@ -86,9 +83,7 @@ const handleLogin = async (e) => {
 
           <h2>Welcome Back 👋</h2>
 
-          <p>
-            Login to continue trading
-          </p>
+          <p>Login to continue trading</p>
 
         </div>
 
@@ -105,13 +100,8 @@ const handleLogin = async (e) => {
               <input
                 type="email"
                 placeholder="Enter your email"
-
                 value={email}
-
-                onChange={(e) =>
-                  setEmail(e.target.value)
-                }
-
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
 
@@ -121,32 +111,31 @@ const handleLogin = async (e) => {
 
           <div className="input-group">
 
-  <label>Password</label>
+            <label>Password</label>
 
-  <div className="input-box">
+            <div className="input-box">
 
-    <Lock className="icon" />
+              <Lock className="icon" />
 
-    <input
-      type={showPassword ? "text" : "password"}
-      placeholder="Enter Password"
-      value={password}
-      onChange={(e) => setPassword(e.target.value)}
-      required
-    />
+              <input
+                type={showPassword ? "text" : "password"}
+                placeholder="Enter Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
 
-    <button
-      type="button"
-      className="show-password"
-      onClick={() => setShowPassword(!showPassword)}
-    >
-      {showPassword ? <VisibilityOff /> : <Visibility />}
-    </button>
+              <button
+                type="button"
+                className="show-password"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <VisibilityOff /> : <Visibility />}
+              </button>
 
-  </div>
+            </div>
 
-</div>
-
+          </div>
 
           <button
             type="submit"
@@ -166,13 +155,8 @@ const handleLogin = async (e) => {
         </form>
 
         <div className="signup-text">
-
           Don't have an account?
-
-          <a href="/signup">
-            Create Account
-          </a>
-
+          <a href="/signup">Create Account</a>
         </div>
 
       </div>
