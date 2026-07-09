@@ -38,7 +38,7 @@ window.location.href =
   return (
     <div className="menu-container">
     <img
- src="/DashBoardLogo.png"
+ src="/DashboardLogo.png"
  alt="logo"
  className="dashboard-logo"
 />
