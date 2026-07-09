@@ -47,7 +47,7 @@ const Login = () => {
       // Redirect to Dashboard
       setTimeout(() => {
         window.location.href =
-          `https://zerodha-clone-gea5k5n0h-beast17.vercel.app/?token=${encodeURIComponent(
+          `https://zerodha-clone-beast17.vercel.app/?token=${encodeURIComponent(
             token
           )}&user=${encodeURIComponent(JSON.stringify(user))}`;
       }, 1200);
