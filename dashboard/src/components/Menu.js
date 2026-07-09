@@ -29,8 +29,8 @@ const Menu = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("user");
 
-  window.location.href =
-    "https://zerodha-clone-frontend-beast17.vercel.app/login";
+window.location.href =
+"https://zerodha-clone-frontend-beast17.vercel.app/login";
 };
 
   const isActive = (path) => location.pathname === path;
