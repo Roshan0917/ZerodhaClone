@@ -26,11 +26,12 @@ const Menu = () => {
   }, [darkMode]);
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+  localStorage.removeItem("token");
+  localStorage.removeItem("user");
 
-    window.location.href = "https://zerodhaclone-backend-b7nd.onrender.com/login";
-  };
+  window.location.href =
+    "https://zerodha-clone-frontend-beast17.vercel.app/login";
+};
 
   const isActive = (path) => location.pathname === path;
 
