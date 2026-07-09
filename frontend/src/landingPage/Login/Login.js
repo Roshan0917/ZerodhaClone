@@ -19,47 +19,54 @@ const Login = () => {
   const [loading, setLoading] =
     useState(false);
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
+const handleLogin = async (e) => {
+  e.preventDefault();
 
-    if (!email || !password) {
-      toast.error("Please fill all fields");
-      return;
-    }
+  if (!email || !password) {
+    toast.error("Please fill all fields");
+    return;
+  }
 
-    try {
-      setLoading(true);
+  try {
+    setLoading(true);
 
-      const res = await axios.post(
-        "https://zerodhaclone-backend-b7nd.onrender.com/login",
-        {
-          email,
-          password,
-        }
-      );
+    const res = await axios.post(
+      "https://zerodhaclone-backend-b7nd.onrender.com/login",
+      {
+        email,
+        password,
+      }
+    );
 
-      toast.success("Login Successful 🎉");
+    toast.success("Login Successful 🎉");
 
-      const token = res.data.token;
-      const user = JSON.stringify(res.data.user);
+    const token = res.data.token;
+    const user = res.data.user;
 
-      setTimeout(() => {
-        window.location.href =
-          `https://zerodhaclone-backend-b7nd.onrender.com?token=${token}&user=${encodeURIComponent(
-            user
-          )}`;
-      }, 1200);
-    } catch (err) {
-      console.log(err);
+    // Temporary save (same project ke liye useful)
+    localStorage.setItem("token", token);
+    localStorage.setItem("user", JSON.stringify(user));
 
-      toast.error(
-        err.response?.data ||
-          "Invalid Email or Password"
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
+    // Dashboard project par redirect
+    setTimeout(() => {
+      window.location.href =
+        `https://zerodha-clone-gea5k5n0h-beast17.vercel.app/?token=${encodeURIComponent(
+          token
+        )}&userId=${user._id}`;
+    }, 1200);
+
+  } catch (err) {
+    console.log(err);
+
+    toast.error(
+      err.response?.data?.message ||
+      err.response?.data ||
+      "Invalid Email or Password"
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   return (
     <div className="login-page">
