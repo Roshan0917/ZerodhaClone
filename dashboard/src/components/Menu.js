@@ -36,7 +36,7 @@ const handleLogout = () => {
   return (
     <div className="menu-container">
     <img
- src="/DashboardLogo.png"
+ src="/DashBoardLogo.png"
  alt="logo"
  className="dashboard-logo"
 />
