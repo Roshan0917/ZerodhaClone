@@ -24,11 +24,13 @@ const Menu = () => {
     // notify all components
     window.dispatchEvent(new Event("themeChanged"));
   }, [darkMode]);
+
+  
 const handleLogout = () => {
   localStorage.clear();
 
   window.location.href =
-    "https://zerodha-clone-frontend-beast17.vercel.app/login";
+    "https://zerodha-clone-frontend-sable.vercel.app/login";
 };
 
   const isActive = (path) => location.pathname === path;
