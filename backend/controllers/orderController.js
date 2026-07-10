@@ -4,389 +4,445 @@ const { PositionsModel } = require("../models/PositionsModel");
 const { UserModel } = require("../models/UserModel");
 
 
+// ================= GET ORDERS =================
 
-// GET ORDERS
+exports.getOrders = async (req, res) => {
+  try {
 
-exports.getOrders = async(req,res)=>{
-
-try{
-
-
-const orders = await OrdersModel.find({
-
-userId:req.params.userId
-
-}).sort({createdAt:-1});
+    const orders = await OrdersModel.find({
+      userId: req.params.userId,
+    }).sort({ createdAt: -1 });
 
 
-res.json(orders);
+    res.json(orders);
 
+  } catch (err) {
 
+    console.log(err);
 
-}catch(err){
+    res.status(500).json({
+      message: "Error fetching orders",
+    });
 
-console.log(err);
-
-res.status(500).json({
-message:"Error fetching orders"
-});
-
-
-}
-
+  }
 };
 
 
 
 
+// ================= NEW ORDER =================
 
-// NEW ORDER
+exports.newOrder = async (req, res) => {
 
+  try {
 
-exports.newOrder = async(req,res)=>{
+    const {
+      userId,
+      name,
+      qty,
+      price,
+      mode
+    } = req.body;
 
 
-try{
+    const quantity = Number(qty);
+    const stockPrice = Number(price);
 
+    const total = quantity * stockPrice;
 
-const {
-userId,
-name,
-qty,
-price,
-mode
 
-}=req.body;
 
+    const user = await UserModel.findById(userId);
 
 
-const quantity=Number(qty);
+    if (!user) {
 
-const stockPrice=Number(price);
+      return res.status(404).json({
+        message:"User not found"
+      });
 
-const total=quantity*stockPrice;
+    }
 
 
 
-const user=await UserModel.findById(userId);
+    let holding = await HoldingsModel.findOne({
+      userId,
+      name
+    });
 
 
 
-if(!user){
 
-return res.status(404).send("User not found");
+    // ================= BUY =================
 
-}
 
+    if(mode === "BUY"){
 
 
+      if(user.availableMargin < total){
 
+        return res.status(400).json({
+          message:"Insufficient Funds"
+        });
 
-let holding = await HoldingsModel.findOne({
+      }
 
-userId,
-name
 
-});
 
+      // Update Balance
 
+      user.availableMargin -= total;
 
+      user.usedMargin += total;
 
-// ================= BUY =================
+      await user.save();
 
 
-if(mode==="BUY"){
 
 
 
-if(user.availableMargin < total){
+      // ================= HOLDINGS =================
 
-return res.status(400).send("Insufficient Funds");
 
-}
 
+      if(holding){
 
 
-user.availableMargin -= total;
+        const oldQty = Number(holding.qty);
 
-user.usedMargin += total;
+        const oldAvg = Number(holding.avg);
 
 
-await user.save();
 
+        const newQty = oldQty + quantity;
 
 
+        const newAvg =
+        ((oldQty * oldAvg) + (quantity * stockPrice))
+        /
+        newQty;
 
-// HOLDING UPDATE
 
 
-if(holding){
+        holding.qty = newQty;
 
+        holding.avg = Number(newAvg.toFixed(2));
 
-holding.qty += quantity;
+        holding.price = stockPrice;
 
-holding.avg = stockPrice;
 
-holding.price = stockPrice;
+        await holding.save();
 
 
-await holding.save();
 
+      }
 
-}else{
+      else{
 
 
-await HoldingsModel.create({
+        await HoldingsModel.create({
 
-userId,
+          userId,
 
-name,
+          name,
 
-qty:quantity,
+          qty: quantity,
 
-avg:stockPrice,
+          avg: stockPrice,
 
-price:stockPrice,
+          price: stockPrice,
 
-net:"0%",
+          net:"0%",
 
-day:"0%"
+          day:"0%"
 
-});
+        });
 
 
-}
+      }
 
 
 
 
 
 
-// POSITION UPDATE
+      // ================= POSITIONS =================
 
 
-let position = await PositionsModel.findOne({
 
-userId,
-name
+      let position = await PositionsModel.findOne({
+        userId,
+        name
+      });
 
-});
 
 
+      if(position){
 
-if(position){
 
+        const oldQty = Number(position.qty);
 
-position.qty += quantity;
+        const oldAvg = Number(position.avg);
 
-position.avg = stockPrice;
 
-position.price = stockPrice;
 
+        const newQty = oldQty + quantity;
 
-await position.save();
 
 
+        const newAvg =
+        ((oldQty * oldAvg)+(quantity*stockPrice))
+        /
+        newQty;
 
-}else{
 
 
-await PositionsModel.create({
+        position.qty = newQty;
 
-userId,
+        position.avg = Number(newAvg.toFixed(2));
 
-product:"CNC",
+        position.price = stockPrice;
 
-name,
 
-qty:quantity,
+        await position.save();
 
-avg:stockPrice,
 
-price:stockPrice,
 
-net:"0%",
+      }
 
-day:"0%",
+      else{
 
-isLoss:false
 
+        await PositionsModel.create({
 
-});
+          userId,
 
+          product:"CNC",
 
-}
+          name,
 
+          qty:quantity,
 
+          avg:stockPrice,
 
+          price:stockPrice,
 
-}
+          net:"0%",
 
+          day:"0%",
 
+          isLoss:false
 
+        });
 
 
+      }
 
-// ================= SELL =================
 
 
-else if(mode==="SELL"){
+    }
 
 
 
-if(!holding){
 
-return res.status(400).send("Stock not found");
 
-}
+    // ================= SELL =================
 
 
+    else if(mode === "SELL"){
 
-if(holding.qty < quantity){
 
-return res.status(400).send("Insufficient quantity");
 
-}
+      if(!holding){
 
+        return res.status(400).json({
+          message:"Stock not found"
+        });
 
+      }
 
 
 
-holding.qty -= quantity;
+      if(holding.qty < quantity){
 
+        return res.status(400).json({
+          message:"Insufficient quantity"
+        });
 
+      }
 
-if(holding.qty===0){
 
 
-await HoldingsModel.deleteOne({
 
-userId,
-name
 
-});
+      // Remove From Holdings
 
 
-}else{
+      holding.qty -= quantity;
 
 
-await holding.save();
 
+      if(holding.qty <= 0){
 
-}
 
+        await HoldingsModel.deleteOne({
+          userId,
+          name
+        });
 
 
+      }
 
+      else{
 
 
-// POSITION UPDATE
+        await holding.save();
 
 
-let position = await PositionsModel.findOne({
+      }
 
-userId,
-name
 
-});
 
 
 
-if(position){
 
 
+      // ================= POSITIONS =================
 
-position.qty -= quantity;
 
 
+      let position = await PositionsModel.findOne({
+        userId,
+        name
+      });
 
-if(position.qty<=0){
 
 
-await PositionsModel.deleteOne({
+      if(position){
 
-userId,
-name
 
-});
+        position.qty -= quantity;
 
 
-}else{
 
+        if(position.qty <=0){
 
-await position.save();
 
+          await PositionsModel.deleteOne({
+            userId,
+            name
+          });
 
-}
 
+        }
 
+        else{
 
-}
 
+          await position.save();
 
 
+        }
 
 
+      }
 
-user.availableMargin += total;
 
 
-user.usedMargin = Math.max(
 
-0,
 
-user.usedMargin-total
 
-);
+      // ================= UPDATE BALANCE =================
 
 
 
-await user.save();
+      user.availableMargin += total;
 
 
 
+      user.usedMargin = Math.max(
+        0,
+        user.usedMargin - total
+      );
 
-}
 
 
+      await user.save();
 
 
 
+    }
 
-await OrdersModel.create({
 
-userId,
 
-name,
 
-qty:quantity,
+    else{
 
-price:stockPrice,
 
-mode
+      return res.status(400).json({
+        message:"Invalid Order Type"
+      });
 
-});
 
+    }
 
 
 
-res.send("Order successful");
 
 
 
+    // ================= SAVE ORDER =================
 
 
-}catch(err){
 
+    await OrdersModel.create({
 
-console.log(err);
+      userId,
 
+      name,
 
-res.status(500).send("Server Error");
+      qty:quantity,
 
+      price:stockPrice,
 
-}
+      mode
 
 
+    });
+
+
+
+
+
+
+    return res.status(200).json({
+
+      success:true,
+
+      message:"Order Successful"
+
+    });
+
+
+
+
+  }
+
+  catch(err){
+
+
+    console.log("ORDER ERROR:",err);
+
+
+    res.status(500).json({
+
+      success:false,
+
+      message:"Server Error"
+
+    });
+
+
+  }
 
 };
