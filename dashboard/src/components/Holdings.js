@@ -5,17 +5,55 @@ import "./Holdings.css";
 
 const Holdings = () => {
   const [allHoldings, setAllHoldings] = useState([]);
+useEffect(() => {
 
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
 
-    if (!user) return;
+  if (!user) return;
 
-    axios
-      .get(`https://zerodhaclone-backend-b7nd.onrender.com/allHoldings/${user._id}`)
-      .then((res) => setAllHoldings(res.data))
-      .catch((err) => console.log(err));
-  }, []);
+
+  const fetchHoldings = async () => {
+
+    try {
+
+      const res = await axios.get(
+        `https://zerodhaclone-backend-b7nd.onrender.com/allHoldings/${user._id}`
+      );
+
+
+      setAllHoldings(res.data);
+
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
+
+  };
+
+
+
+  // first load
+
+  fetchHoldings();
+
+
+
+  // refresh every 5 seconds
+
+  const interval = setInterval(
+    fetchHoldings,
+    5000
+  );
+
+
+
+  return () => clearInterval(interval);
+
+
+
+}, []);
 
   const summary = useMemo(() => {
     const investment = allHoldings.reduce(

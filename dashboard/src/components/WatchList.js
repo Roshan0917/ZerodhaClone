@@ -71,7 +71,7 @@ const WatchList = () => {
 
     const interval = setInterval(
       fetchStocks,
-      15000
+      5000
     );
 
 

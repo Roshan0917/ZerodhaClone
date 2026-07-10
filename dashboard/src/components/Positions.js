@@ -9,26 +9,54 @@ const Positions = () => {
 
   useEffect(() => {
 
-    const user = JSON.parse(localStorage.getItem("user"));
+  const user = JSON.parse(localStorage.getItem("user"));
 
-    if (!user) return;
-
-
-    axios
-      .get(`https://zerodhaclone-backend-b7nd.onrender.com/allPositions/${user._id}`)
-      .then((res) => {
-
-        setPositions(res.data);
-
-      })
-      .catch((err) => {
-
-        console.log(err);
-
-      });
+  if (!user) return;
 
 
-  }, []);
+
+  const fetchPositions = async () => {
+
+    try {
+
+      const res = await axios.get(
+        `https://zerodhaclone-backend-b7nd.onrender.com/allPositions/${user._id}`
+      );
+
+
+      setPositions(res.data);
+
+
+    } catch (err) {
+
+      console.log(err);
+
+    }
+
+  };
+
+
+
+  // first load
+
+  fetchPositions();
+
+
+
+  // refresh every 5 seconds
+
+  const interval = setInterval(
+    fetchPositions,
+    5000
+  );
+
+
+
+  return () => clearInterval(interval);
+
+
+
+}, []);
 
 
 

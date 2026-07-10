@@ -35,7 +35,7 @@ const Summary = () => {
 
     fetchSummary();
 
-    const interval = setInterval(fetchSummary, 30000);
+    const interval = setInterval(fetchSummary, 5000);
 
     return () => clearInterval(interval);
   }, []);
