@@ -156,7 +156,7 @@ Zerodha-Clone
 ## Clone Repository
 
 ```bash
-git clone <your-repository-link>
+git clone https://github.com/Roshan0917/ZerodhaClone
 ```
 
 Move into project directory:
