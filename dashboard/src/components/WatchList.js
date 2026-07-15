@@ -102,143 +102,90 @@ const WatchList = () => {
 
   return (
 
-    <div className="watchlist">
+<div className="watchlist">
 
+    {/* Header */}
 
+    <div className="watchlist-header">
 
-      {/* HEADER */}
+        <div>
 
-      <div className="watchlist-header">
+            <h2>Watchlist</h2>
 
-        <h2>
-          Watchlist
-        </h2>
+            <span>{filtered.length} Stocks</span>
 
-
-        <span>
-          {filtered.length}/5
-        </span>
-
-
-      </div>
-
-
-
-
-
-
-      {/* SEARCH */}
-
-      <div className="search-box">
-
-        <Search className="search-icon" />
-
-
-        <input
-
-          placeholder="Search stocks..."
-
-          value={searchTerm}
-
-          onChange={(e)=>
-            setSearchTerm(e.target.value)
-          }
-
-        />
-
-
-      </div>
-
-
-
-
-
-
-
-      {/* LIST */}
-
-      <div className="watchlist-items">
-
-
-        {filtered.map((stock,index)=>(
-
-          <WatchListItem
-
-            key={index}
-
-            stock={stock}
-
-          />
-
-        ))}
-
-
-      </div>
-
-
-
-
-
-
-
-
-      {/* CHART */}
-
-      <div className="portfolio-chart">
-
-
-        <h3>
-          Portfolio Allocation
-        </h3>
-
-
-
-
-        <DoughnutChart
-
-          data={{
-
-            labels: filtered.map(
-              (s)=>s.name
-            ),
-
-
-            datasets:[
-
-              {
-
-                data: filtered.map(
-                  (s)=>s.price
-                ),
-
-
-                backgroundColor:[
-
-                  "#387ed1",
-                  "#00b386",
-                  "#ff9800",
-                  "#9c27b0",
-                  "#03a9f4",
-
-                ],
-
-              },
-
-            ],
-
-
-          }}
-
-        />
-
-
-      </div>
-
-
+        </div>
 
     </div>
 
-  );
+    {/* Search */}
+
+    <div className="watchlist-search">
+
+        <Search />
+
+        <input
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e)=>setSearchTerm(e.target.value)}
+        />
+
+    </div>
+
+    {/* Scroll Area */}
+
+    <div className="watchlist-scroll">
+
+        <div className="watchlist-items">
+
+            {filtered.map((stock,index)=>
+
+                <WatchListItem
+                    key={index}
+                    stock={stock}
+                />
+
+            )}
+
+        </div>
+
+        <div className="portfolio-chart">
+
+            <h3>Portfolio Allocation</h3>
+
+            <DoughnutChart
+
+                data={{
+
+                    labels:filtered.map(s=>s.name),
+
+                    datasets:[{
+
+                        data:filtered.map(s=>s.price),
+
+                        backgroundColor:[
+
+                            "#387ed1",
+                            "#00b386",
+                            "#ff9800",
+                            "#9c27b0",
+                            "#03a9f4"
+
+                        ]
+
+                    }]
+
+                }}
+
+            />
+
+        </div>
+
+    </div>
+
+</div>
+
+);
 
 };
 

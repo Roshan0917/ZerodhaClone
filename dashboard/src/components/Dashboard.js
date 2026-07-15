@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import WatchList from "./WatchList";
 import Summary from "./Summary";
@@ -16,57 +17,191 @@ import { GeneralContextProvider } from "./GeneralContext";
 
 const Dashboard = () => {
 
-  return (
 
-    <div className="dashboard-container">
-
-
-      <GeneralContextProvider>
-
-        <div className="watchlist-container">
-
-          <WatchList />
-
-        </div>
-
-
-      </GeneralContextProvider>
+const [watchlistOpen,setWatchlistOpen] = useState(true);
 
 
 
-
-      <div className="content">
-
-
-        <Routes>
-
-          <Route index element={<Summary />} />
-
-          <Route path="orders" element={<Orders />} />
-
-          <Route path="holdings" element={<Holdings />} />
-
-          <Route path="positions" element={<Positions />} />
-
-          <Route path="funds" element={<Funds />} />
-
-          <Route path="apps" element={<Apps />} />
-
-          <Route path="open-account" element={<OpenAccount />} />
-
-          <Route path="admin" element={<AdminPanel />} />
-
-        </Routes>
+useEffect(()=>{
 
 
-      </div>
+const resizeHandler=()=>{
 
 
-    </div>
+if(window.innerWidth <= 1100){
 
-  );
+setWatchlistOpen(false);
+
+}
+else{
+
+setWatchlistOpen(true);
+
+}
+
 
 };
+
+
+
+resizeHandler();
+
+
+window.addEventListener(
+"resize",
+resizeHandler
+);
+
+
+return ()=>{
+
+window.removeEventListener(
+"resize",
+resizeHandler
+);
+
+};
+
+
+},[]);
+
+
+
+
+return(
+
+<GeneralContextProvider>
+
+
+<div className="dashboard-container">
+
+
+
+{/* WATCHLIST */}
+
+<aside
+
+className={`watchlist-container 
+${watchlistOpen ? "active" : ""}`}
+
+>
+
+
+<WatchList/>
+
+
+</aside>
+
+
+
+
+
+{/* TOGGLE */}
+
+<button
+
+className="watchlist-toggle"
+
+onClick={()=>setWatchlistOpen(!watchlistOpen)}
+
+>
+
+
+{
+
+watchlistOpen
+
+?
+
+<FaChevronLeft/>
+
+:
+
+<FaChevronRight/>
+
+}
+
+
+</button>
+
+
+
+
+
+
+{/* MAIN CONTENT */}
+
+<main className="content">
+
+
+<Routes>
+
+
+<Route
+index
+element={<Summary/>}
+/>
+
+
+<Route
+path="orders"
+element={<Orders/>}
+/>
+
+
+<Route
+path="holdings"
+element={<Holdings/>}
+/>
+
+
+<Route
+path="positions"
+element={<Positions/>}
+/>
+
+
+<Route
+path="funds"
+element={<Funds/>}
+/>
+
+
+<Route
+path="apps"
+element={<Apps/>}
+/>
+
+
+<Route
+path="open-account"
+element={<OpenAccount/>}
+/>
+
+
+<Route
+path="admin"
+element={<AdminPanel/>}
+/>
+
+
+</Routes>
+
+
+
+</main>
+
+
+
+</div>
+
+
+</GeneralContextProvider>
+
+
+)
+
+}
 
 
 export default Dashboard;

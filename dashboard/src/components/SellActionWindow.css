@@ -10,3 +10,43 @@
 .btn-red:hover {
   background: #c43b36;
 }
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+  .sell-window {
+
+    width: 95%;
+
+    max-width: 400px;
+
+    margin: auto;
+
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .sell-window {
+
+    width: 96%;
+
+    border-radius: 12px;
+
+  }
+
+  .btn-red {
+
+    width: 100%;
+
+    padding: 12px;
+
+    font-size: 15px;
+
+  }
+
+}

@@ -1,156 +1,191 @@
 /* =========================
-   WATCHLIST
+   WATCHLIST MAIN
 ========================= */
-
 
 .watchlist{
 
-  width:100%;
+height:100%;
 
-  padding:24px;
+display:flex;
 
-  background:#f3f5f7;
+flex-direction:column;
 
-  min-height:max-content;
+background:#f7f9fc;
 
 }
 
 
+.watchlist-scroll{
+
+flex:1;
+
+overflow-y:auto;
+
+}
 
 
-
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 .watchlist-header{
 
-  display:flex;
+    padding:20px;
 
-  justify-content:space-between;
+    background:white;
 
-  align-items:center;
-
-  margin-bottom:20px;
+    border-bottom:1px solid #e5e7eb;
 
 }
 
 
 .watchlist-header h2{
 
-  color:#1f2937;
+    font-size:22px;
 
-  font-size:24px;
+    color:#1f2937;
+
+    margin-bottom:5px;
 
 }
-
 
 
 .watchlist-header span{
 
-  color:#6b7280;
+    font-size:14px;
+
+    color:#6b7280;
+
+}
+
+
+
+/* =========================
+   SEARCH
+========================= */
+
+
+.watchlist-search{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:15px 20px;
+
+    background:#f7f9fc;
+
+}
+
+
+.watchlist-search svg{
+
+    color:#64748b;
+
+}
+
+
+.watchlist-search input{
+
+    width:100%;
+
+    padding:12px 15px;
+
+    border:none;
+
+    outline:none;
+
+    background:white;
+
+    border-radius:12px;
 
 }
 
 
 
 
+/* =========================
+   SCROLL
+========================= */
 
 
+.watchlist-scroll{
 
-/* SEARCH */
+    flex:1;
 
+    overflow-y:auto;
 
-.search-box{
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  padding:12px 15px;
-
-  background:white;
-
-  border:1px solid #e5e7eb;
-
-  border-radius:12px;
-
-  margin-bottom:20px;
+    padding:20px;
 
 }
 
 
+.watchlist-scroll::-webkit-scrollbar{
 
-.search-box input{
-
-  width:100%;
-
-  border:none;
-
-  outline:none;
-
-  background:transparent;
+    width:5px;
 
 }
 
 
 
 
-
-
-
-/* STOCK LIST */
+/* =========================
+   ITEMS
+========================= */
 
 
 .watchlist-items{
 
-  display:flex;
+    display:flex;
 
-  flex-direction:column;
+    flex-direction:column;
 
-  gap:14px;
+    gap:12px;
 
 }
 
 
-
-
-
-/* STOCK CARD */
 
 
 .watch-item{
 
-  position:relative;
+    position:relative;
 
-  display:flex;
+    display:flex;
 
-  justify-content:space-between;
+    justify-content:space-between;
 
-  align-items:center;
+    align-items:center;
 
-  padding:18px;
+    padding:16px;
 
-  background:white;
+    background:white;
 
-  border-radius:14px;
+    border-radius:14px;
 
-  border:1px solid #edf1f7;
+    box-shadow:0 3px 12px rgba(0,0,0,.06);
 
-  box-shadow:0 3px 12px rgba(0,0,0,.06);
+    transition:.25s;
 
 }
 
 
+.watch-item:hover{
+
+    transform:translateY(-2px);
+
+}
 
 
 
 
 .stock-left h4{
 
-  margin:0;
+    color:#1f2937;
 
-  color:#1f2937;
+    margin-bottom:6px;
 
 }
 
@@ -158,9 +193,20 @@
 
 .stock-right h3{
 
-  margin:0;
+    color:#111827;
 
-  color:#111827;
+}
+
+
+
+
+.stock-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
 
 }
 
@@ -168,47 +214,45 @@
 
 .up{
 
-  color:#16a34a;
+    color:#16a34a;
 
 }
-
 
 
 .down{
 
-  color:#dc2626;
+    color:#dc2626;
 
 }
 
 
 
-
-
-
-/* ACTIONS */
+/* =========================
+ ACTIONS
+========================= */
 
 
 .watch-actions{
 
-  position:absolute;
+    position:absolute;
 
-  right:10px;
+    right:10px;
 
-  top:50%;
+    top:50%;
 
-  transform:translateY(-50%);
+    transform:translateY(-50%);
 
-  display:flex;
+    display:flex;
 
-  gap:8px;
+    gap:8px;
 
-  padding:8px;
+    background:white;
 
-  background:white;
+    padding:8px;
 
-  border-radius:12px;
+    border-radius:12px;
 
-  z-index:5;
+    z-index:10;
 
 }
 
@@ -219,13 +263,13 @@
 .sell-btn,
 .icon-btn{
 
-  border:none;
+    border:none;
 
-  padding:7px 12px;
+    padding:7px 12px;
 
-  border-radius:8px;
+    border-radius:8px;
 
-  cursor:pointer;
+    cursor:pointer;
 
 }
 
@@ -233,9 +277,9 @@
 
 .buy-btn{
 
-  background:#dcfce7;
+    background:#dcfce7;
 
-  color:#166534;
+    color:#166534;
 
 }
 
@@ -243,9 +287,9 @@
 
 .sell-btn{
 
-  background:#fee2e2;
+    background:#fee2e2;
 
-  color:#991b1b;
+    color:#991b1b;
 
 }
 
@@ -253,91 +297,127 @@
 
 .icon-btn{
 
-  background:#f1f5f9;
+    background:#f1f5f9;
 
 }
 
 
 
-
-
-
 /* =========================
-   CHART
+ CHART
 ========================= */
 
 
 .portfolio-chart{
 
-  margin-top:30px;
+    margin-top:25px;
 
-  padding:20px;
+    background:white;
 
-  background:white;
+    padding:20px;
 
-  border-radius:16px;
+    border-radius:16px;
 
-  border:1px solid #edf1f7;
-
-  height:380px;
+    height:350px;
 
 }
-
-
-
-
-
-.doughnut-wrapper{
-
-  width:100%;
-
-  height:280px;
-
-  position:relative;
-
-}
-
-
 
 
 
 
 /* =========================
-   DARK MODE
+ DARK MODE
 ========================= */
 
 
-body.dark-mode .watchlist{
+body.dark-mode .watchlist,
+body.dark-mode .watchlist-search{
 
-  background:#0b1220;
+    background:#0f172a;
 
 }
 
 
+
+body.dark-mode .watchlist-header,
 body.dark-mode .watch-item,
-body.dark-mode .portfolio-chart,
-body.dark-mode .search-box{
+body.dark-mode .portfolio-chart{
 
-  background:#111827;
-
-  border-color:#1e293b;
+    background:#111827;
 
 }
 
 
 
-body.dark-mode .watchlist-header h2,
-body.dark-mode .stock-left h4,
-body.dark-mode .stock-right h3,
-body.dark-mode .portfolio-chart h3{
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4{
 
-  color:#f9fafb;
+    color:white;
 
 }
+
 
 
 body.dark-mode .watch-actions{
 
-  background:#111827;
+    background:#111827;
+
+}
+
+
+
+
+/* =========================
+ MOBILE
+========================= */
+
+
+@media(max-width:768px){
+
+
+.watch-item{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+}
+
+
+
+.stock-right{
+
+    width:100%;
+
+    justify-content:space-between;
+
+}
+
+
+
+.watch-actions{
+
+    position:static;
+
+    transform:none;
+
+    width:100%;
+
+    justify-content:center;
+
+}
+
+
+
+.portfolio-chart{
+
+    height:300px;
+
+}
+
+
 
 }

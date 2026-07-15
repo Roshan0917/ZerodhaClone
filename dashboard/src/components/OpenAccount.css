@@ -264,3 +264,152 @@ body.dark-mode .step.active{
 
     background:#387ed1;
 }
+
+/* ==========================
+   RESPONSIVE - TABLET
+========================== */
+
+@media (max-width: 992px) {
+
+  .open-account {
+    padding: 30px 20px;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .progress {
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .form-card {
+    width: 100%;
+    max-width: 650px;
+    padding: 30px;
+  }
+
+}
+
+/* ==========================
+   RESPONSIVE - MOBILE
+========================== */
+
+@media (max-width: 768px) {
+
+  .open-account {
+    padding: 20px 15px;
+  }
+
+  .hero {
+    margin-bottom: 30px;
+  }
+
+  .hero h1 {
+    font-size: 28px;
+    line-height: 1.3;
+  }
+
+  .hero p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .progress {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .step {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+  }
+
+  .line {
+    height: 2px;
+  }
+
+  .form-card {
+    width: 100%;
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  .form-card h2 {
+    font-size: 22px;
+    margin-bottom: 22px;
+  }
+
+  .input-group {
+    margin-bottom: 18px;
+  }
+
+  .input-group label {
+    font-size: 13px;
+  }
+
+  .input-group input {
+    height: 46px;
+    font-size: 14px;
+  }
+
+  .next-btn {
+    height: 48px;
+    font-size: 15px;
+  }
+
+}
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media (max-width: 480px) {
+
+  .open-account {
+    padding: 15px 10px;
+  }
+
+  .hero h1 {
+    font-size: 24px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .progress {
+    gap: 4px;
+  }
+
+  .step {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .form-card {
+    padding: 18px;
+  }
+
+  .form-card h2 {
+    font-size: 20px;
+  }
+
+  .input-group input {
+    height: 44px;
+    padding: 0 12px;
+  }
+
+  .next-btn {
+    height: 44px;
+    font-size: 14px;
+  }
+
+}

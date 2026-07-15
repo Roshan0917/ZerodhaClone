@@ -545,3 +545,188 @@ body.dark-mode .btn-grey:hover {
   z-index:9999;
 
 }
+
+/* =========================
+   RESPONSIVE - TABLET
+========================= */
+
+@media (max-width: 992px) {
+
+  #buy-window,
+  #sell-window {
+
+    width: 450px;
+    max-width: 92vw;
+
+    padding: 22px;
+
+  }
+
+}
+
+
+/* =========================
+   RESPONSIVE - MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .popup-overlay {
+
+    padding: 15px;
+
+  }
+
+  #buy-window,
+  #sell-window {
+
+    width: 100%;
+    max-width: 420px;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+  }
+
+  .regular-order h3 {
+
+    font-size: 20px;
+
+  }
+
+  .regular-order p {
+
+    font-size: 13px;
+
+  }
+
+  .inputs {
+
+    flex-direction: column;
+
+    gap: 15px;
+
+  }
+
+  fieldset {
+
+    width: 100%;
+
+  }
+
+  fieldset input {
+
+    font-size: 15px;
+
+  }
+
+  .buttons {
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 15px;
+
+  }
+
+  .buttons span {
+
+    text-align: center;
+
+    font-size: 14px;
+
+  }
+
+  .buttons div {
+
+    width: 100%;
+
+    display: flex;
+
+    gap: 10px;
+
+  }
+
+  .buttons div .btn {
+
+    flex: 1;
+
+  }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+  .popup-overlay {
+
+    padding: 10px;
+
+  }
+
+  #buy-window,
+  #sell-window {
+
+    width: 100%;
+
+    max-width: 100%;
+
+    padding: 18px;
+
+    border-radius: 12px;
+
+  }
+
+  .regular-order h3 {
+
+    font-size: 18px;
+
+  }
+
+  .regular-order p {
+
+    font-size: 12px;
+
+  }
+
+  legend {
+
+    font-size: 11px;
+
+  }
+
+  fieldset {
+
+    padding: 8px 10px;
+
+  }
+
+  fieldset input {
+
+    font-size: 14px;
+
+  }
+
+  .btn {
+
+    width: 100%;
+
+    padding: 12px;
+
+    font-size: 14px;
+
+  }
+
+  .buttons div {
+
+    flex-direction: column;
+
+  }
+
+}

@@ -1,77 +1,104 @@
-/* =========================
-   GLOBAL
-========================= */
-
 *{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
 }
+
 
 
 html,
 body,
 #root{
-  height:100%;
-  overflow:hidden;
+
+width:100%;
+height:100%;
+
 }
+
 
 
 body{
-  font-family:"Inter","Segoe UI",sans-serif;
-  background:#fff;
-  color:#424242;
+
+font-family:"Inter",sans-serif;
+
+overflow:hidden;
+
+background:#f5f7fb;
+
 }
 
 
 
-/* =========================
-   MAIN LAYOUT
-========================= */
+
+/* MAIN */
 
 
 .dashboard-container{
 
-  display:flex;
 
-  flex-direction:row;
+display:flex;
 
-  width:100%;
 
-  height:calc(100vh - 70px);
+width:100%;
 
-  margin-top:70px;
 
-  overflow:hidden;
+height:calc(100vh - 70px);
 
-  background:#fff;
+
+margin-top:70px;
+
+
+overflow:hidden;
+
 
 }
 
 
 
-
-
-/* =========================
-   WATCHLIST SIDE
-========================= */
+/* ==========================
+WATCHLIST
+========================== */
 
 
 .watchlist-container{
 
-  flex:0 0 340px;
 
-  width:340px;
+height:100%;
 
-  height:100%;
 
-  overflow-y:auto;
+width:340px;
 
-  overflow-x:hidden;
 
-  background:#fff;
+min-width:340px;
 
-  border-right:1px solid #e5e7eb;
+
+background:white;
+
+
+border-right:1px solid #e5e7eb;
+
+
+transition:.35s ease;
+
+
+overflow:hidden;
+
+
+}
+
+
+
+
+.watchlist-container:not(.active){
+
+
+width:0;
+
+
+min-width:0;
+
 
 }
 
@@ -79,53 +106,31 @@ body{
 
 
 
-
-/* =========================
-   RIGHT CONTENT
-========================= */
+/* ==========================
+CONTENT
+========================== */
 
 
 .content{
 
-  flex:1;
 
-  min-width:0;
-
-  height:100%;
-
-  overflow-y:auto;
-
-  overflow-x:hidden;
-
-  padding:30px;
-
-  background:#fff;
-
-}
+flex:1;
 
 
+height:100%;
 
 
-
-/* =========================
-   SCROLLBAR
-========================= */
+padding:30px;
 
 
-.watchlist-container::-webkit-scrollbar,
-.content::-webkit-scrollbar{
-
-  width:6px;
-
-}
+overflow-y:auto;
 
 
-.watchlist-container::-webkit-scrollbar-thumb,
-.content::-webkit-scrollbar-thumb{
+background:#f5f7fb;
 
-  background:#cbd5e1;
 
-  border-radius:10px;
+transition:.35s ease;
+
 
 }
 
@@ -134,38 +139,168 @@ body{
 
 
 
-/* =========================
-   DARK MODE
-========================= */
+/* ==========================
+TOGGLE
+========================== */
 
 
-body.dark-mode{
+.watchlist-toggle{
 
-  background:#111827;
 
-  color:#f3f4f6;
+position:fixed;
+
+
+left:323px;
+
+
+top:50%;
+
+
+transform:translateY(-50%);
+
+
+
+width:36px;
+
+
+height:36px;
+
+
+border-radius:50%;
+
+
+border:none;
+
+
+background:#387ed1;
+
+
+color:white;
+
+
+display:flex;
+
+
+align-items:center;
+
+
+justify-content:center;
+
+
+
+cursor:pointer;
+
+
+z-index:9999;
+
+
+
+box-shadow:
+0 5px 15px rgba(0,0,0,.25);
+
+
+transition:.35s;
+
 
 }
 
 
-body.dark-mode .dashboard-container{
 
-  background:#111827;
+.watchlist-toggle:hover{
+
+
+scale:1.1;
+
 
 }
 
 
-body.dark-mode .watchlist-container{
 
-  background:#111827;
 
-  border-color:#374151;
+
+
+/* CLOSED POSITION */
+
+
+.watchlist-container:not(.active)
+~ .watchlist-toggle{
+
+
+left:10px;
+
 
 }
 
 
-body.dark-mode .content{
 
-  background:#111827;
+
+
+/* ==========================
+SMALL SCREEN
+========================== */
+
+
+@media(max-width:1100px){
+
+
+
+.watchlist-container{
+
+
+position:fixed;
+
+
+left:0;
+
+
+top:70px;
+
+
+height:calc(100vh - 70px);
+
+
+z-index:5000;
+
+
+}
+
+
+
+.watchlist-container:not(.active){
+
+
+left:-340px;
+
+
+width:340px;
+
+
+}
+
+
+
+
+.watchlist-toggle{
+
+
+left:10px;
+
+
+}
+
+
+
+
+
+.content{
+
+
+padding:20px;
+
+
+}
+
+
+
 
 }

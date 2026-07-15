@@ -320,3 +320,201 @@ body.dark-mode .fund-modal input{
     color:white;
     border:1px solid #374151;
 }
+
+/* =========================
+   RESPONSIVE - LAPTOP
+========================= */
+
+@media (max-width: 1200px) {
+
+  .funds-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* =========================
+   RESPONSIVE - TABLET
+========================= */
+
+@media (max-width: 992px) {
+
+  .funds-page {
+    padding: 20px;
+  }
+
+  .funds-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .fund-buttons {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .green-btn,
+  .blue-btn {
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .funds-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+}
+
+/* =========================
+   RESPONSIVE - MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .funds-page {
+    padding: 15px;
+  }
+
+  .funds-top h2 {
+    font-size: 20px;
+  }
+
+  .funds-top p {
+    font-size: 13px;
+  }
+
+  .fund-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .green-btn,
+  .blue-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .fund-card,
+  .commodity-card,
+  .status-box {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .fund-card h3,
+  .commodity-card h3 {
+    font-size: 17px;
+  }
+
+  .fund-row {
+    padding: 12px 0;
+  }
+
+  .fund-row span:first-child {
+    font-size: 12px;
+  }
+
+  .fund-row span:last-child {
+    font-size: 13px;
+  }
+
+  .commodity-icon {
+    font-size: 42px;
+  }
+
+  .commodity-card p {
+    font-size: 13px;
+  }
+
+  .status-box h3 {
+    font-size: 15px;
+  }
+
+  .fund-modal {
+    width: 92%;
+    padding: 20px;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+  }
+
+  .modal-buttons button {
+    width: 100%;
+  }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 480px) {
+
+  .funds-page {
+    padding: 12px;
+  }
+
+  .funds-top h2 {
+    font-size: 18px;
+  }
+
+  .fund-card,
+  .commodity-card {
+    padding: 14px;
+  }
+
+  .fund-card h3,
+  .commodity-card h3 {
+    font-size: 16px;
+  }
+
+  .fund-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .fund-row span:first-child {
+    font-size: 12px;
+  }
+
+  .fund-row span:last-child {
+    font-size: 13px;
+  }
+
+  .commodity-icon {
+    font-size: 36px;
+  }
+
+  .status-box {
+    padding: 12px;
+  }
+
+  .status-box h3 {
+    font-size: 14px;
+  }
+
+  .status-box p {
+    font-size: 12px;
+  }
+
+  .fund-modal {
+    width: 95%;
+    padding: 18px;
+  }
+
+  .fund-modal h2 {
+    font-size: 20px;
+  }
+
+  .fund-modal input {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+}
