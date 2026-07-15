@@ -1,157 +1,168 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 function Universe() {
-  return (
-    <div className="container mt-5 mb-5">
 
-      {/* Heading */}
-      <div className="text-center mb-5">
-        <h1>The Zerodha Universe</h1>
 
-        <p className="text-muted mt-3">
-          Extend your trading and investment experience even further with our
-          partner platforms.
-        </p>
-      </div>
+const companies = [
 
-      {/* First Row */}
-      <div className="row text-center">
+{
+img:"media/images/smallcaseLogo.png",
+name:"Smallcase",
+desc:"Thematic investment platform"
+},
 
-        <div className="col-lg-4 col-md-6 mb-5">
-          <img
-  src="media/images/smallcaseLogo.png"
-  alt="Smallcase"
-  className="img-fluid"
-  style={{
-    width: "170px",
-    height: "60px",
-    objectFit: "contain",
-    margin: "0 auto",
-    display: "block",
-  }}
-/>
+{
+img:"media/images/streakLogo.png",
+name:"Streak",
+desc:"Algo & strategy trading"
+},
 
-          <p className="text-muted mt-3">
-            Thematic investment platform
-          </p>
-        </div>
+{
+img:"media/images/sensibullLogo.svg",
+name:"Sensibull",
+desc:"Options trading platform"
+},
 
-        <div className="col-lg-4 col-md-6 mb-5">
-          <img
-  src="media/images/streakLogo.png"
-  alt="Streak"
-  className="img-fluid"
-  style={{
-    width: "170px",
-    height: "60px",
-    objectFit: "contain",
-    margin: "0 auto",
-    display: "block",
-  }}
-/>
+{
+img:"media/images/dittoLogo.png",
+name:"Ditto",
+desc:"Insurance simplified"
+},
 
-          <p className="text-muted mt-3">
-            Algo & strategy trading
-          </p>
-        </div>
+{
+img:"media/images/tijori.png",
+name:"Tijori",
+desc:"Fundamental stock research"
+},
 
-        <div className="col-lg-4 col-md-6 mb-5">
-          <img
-  src="media/images/sensibullLogo.svg"
-  alt="Sensibull"
-  className="img-fluid"
-  style={{
-    width: "170px",
-    height: "60px",
-    objectFit: "contain",
-    margin: "0 auto",
-    display: "block",
-  }}
-/>
-
-          <p className="text-muted mt-3">
-            Options trading platform
-          </p>
-        </div>
-
-        <div className="col-lg-4 col-md-6 mb-5">
-        <img
-  src="media/images/dittoLogo.png"
-  alt="Ditto"
-  className="img-fluid"
-  style={{
-    width: "170px",
-    height: "60px",
-    objectFit: "contain",
-    margin: "0 auto",
-    display: "block",
-  }}
-/>
-
-          <p className="text-muted mt-3">
-            Insurance simplified
-          </p>
-        </div>
-
-        <div className="col-lg-4 col-md-6 mb-5">
-          <img
-  src="media/images/tijori.png"
-  alt="Tijori"
-  className="img-fluid"
-  style={{
-    width: "170px",
-    height: "60px",
-    objectFit: "contain",
-    margin: "0 auto",
-    display: "block",
-  }}
-/>
-
-          <p className="text-muted mt-3">
-            Fundamental stock research
-          </p>
-        </div>
-
-        <div className="col-lg-4 col-md-6 mb-5">
-          <img
-  src="media/images/goldenpiLogo.png"
-  alt="GoldenPi"
-  className="img-fluid"
-  style={{
-    width: "170px",
-    height: "60px",
-    objectFit: "contain",
-    margin: "0 auto",
-    display: "block",
-  }}
-/>
-
-          <p className="text-muted mt-3">
-            Invest in fixed-income products
-          </p>
-        </div>
-
-      </div>
-
-      {/* Signup Button */}
-      <div className="text-center mt-3">
-
-        <Link
-          to="/signup"
-          className="btn btn-primary btn-lg px-5 py-3"
-          style={{
-            borderRadius: "10px",
-            textDecoration: "none",
-          }}
-        >
-          Signup Now
-        </Link>
-
-      </div>
-
-    </div>
-  );
+{
+img:"media/images/goldenpiLogo.png",
+name:"GoldenPi",
+desc:"Invest in fixed-income products"
 }
+
+];
+
+
+
+return (
+
+<div className="container mt-5 mb-5">
+
+
+<div className="text-center mb-5">
+
+
+<h1>
+The Zerodha Universe
+</h1>
+
+
+<p className="text-muted mt-3 px-3">
+
+Extend your trading and investment experience even further with our partner platforms.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div className="row text-center">
+
+
+{
+companies.map((item,index)=>(
+
+<div 
+className="col-lg-4 col-md-6 col-12 mb-5"
+key={index}
+>
+
+
+<img
+
+src={item.img}
+
+alt={item.name}
+
+className="img-fluid"
+
+style={{
+
+width:"170px",
+
+height:"60px",
+
+objectFit:"contain",
+
+margin:"auto",
+
+display:"block"
+
+}}
+
+/>
+
+
+<p className="text-muted mt-3">
+
+{item.desc}
+
+</p>
+
+
+</div>
+
+
+))
+}
+
+
+</div>
+
+
+
+
+
+<div className="text-center mt-3">
+
+
+<Link
+
+to="/signup"
+
+className="btn btn-primary btn-lg px-5 py-3"
+
+style={{
+
+borderRadius:"10px",
+
+textDecoration:"none"
+
+}}
+
+>
+
+Signup Now
+
+</Link>
+
+
+</div>
+
+
+
+</div>
+
+);
+
+}
+
 
 export default Universe;

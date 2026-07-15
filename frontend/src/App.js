@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./landingPage/Navbar";
 import Footer from "./landingPage/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 
 import HomePage from "./landingPage/home/HomePage";
 import Signup from "./landingPage/signup/Signup";
@@ -18,6 +19,8 @@ function App() {
     <>
 
       <Navbar />
+
+      <ScrollToTop />
 
       <Routes>
         <Route path="/" element={<HomePage />} />

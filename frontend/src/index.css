@@ -1,17 +1,73 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+    'Helvetica Neue', sans-serif;
+
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 
+  'Courier New', monospace;
 }
 
+
+
+/* Navbar */
+
 .nav-link{
-  margin-left: 40px;
+  margin-left:40px;
+}
+
+
+@media(max-width:768px){
+
+  .navbar-nav{
+    text-align:center;
+    gap:10px;
+  }
+
+}
+
+
+
+/* Open Account Button */
+
+.open-account-btn{
+
+  width:20%;
+
+}
+
+
+
+@media(max-width:768px){
+
+  .open-account-btn{
+
+    width:60%;
+
+  }
+
+}
+
+
+
+@media(max-width:576px){
+
+  .open-account-btn{
+
+    width:80%;
+
+  }
+
+}
+
+@media(max-width:768px){
+  .nav-link{
+    margin-left:0;
+  }
 }

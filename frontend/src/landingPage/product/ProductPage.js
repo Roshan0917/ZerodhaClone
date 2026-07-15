@@ -5,13 +5,16 @@ import LeftSection from "./LeftSection";
 import RightSection from "./RightSection";
 import Universe from "./Universe";
 
-import Navbar from "../Navbar";
-import Footer from "../Footer";
 
-function PricingPage() {
+function ProductsPage() {
+
   return (
     <>
+
+
       <Hero />
+
+
       <LeftSection
         imageURL="media/images/kite.png"
         productName="Kite"
@@ -21,12 +24,18 @@ function PricingPage() {
         googlePlay=""
         appStore=""
       />
+
+
+
       <RightSection
         imageURL="media/images/console.png"
         productName="Console"
         productDesription="The central dashboard for your Zerodha account. Gain insights into your trades and investments with in-depth reports and visualisations."
         learnMore=""
       />
+
+
+
       <LeftSection
         imageURL="media/images/coin.png"
         productName="Coin"
@@ -36,12 +45,18 @@ function PricingPage() {
         googlePlay=""
         appStore=""
       />
+
+
+
       <RightSection
         imageURL="media/images/kiteconnect.png"
         productName="Kite Connect API"
         productDesription="Build powerful trading platforms and experiences with our super simple HTTP/JSON APIs. If you are a startup, build your investment app and showcase it to our clientbase."
         learnMore=""
       />
+
+
+
       <LeftSection
         imageURL="media/images/varsity.png"
         productName="Varsity mobile"
@@ -51,13 +66,23 @@ function PricingPage() {
         googlePlay=""
         appStore=""
       />
-      <p className="text-center mt-5 mb-5">
-        Want to know more about our technology stack? Check out the Zerodha.tech
-        blog.
+
+
+
+      <p className="text-center mt-5 mb-5 px-3 text-muted">
+
+        Want to know more about our technology stack? Check out the Zerodha.tech blog.
+
       </p>
+
+
+
       <Universe />
+
+
     </>
   );
 }
 
-export default PricingPage;
+
+export default ProductsPage;
